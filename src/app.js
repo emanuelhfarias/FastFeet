@@ -9,7 +9,6 @@ class App {
   }
 
   middlewares() {
-
   }
 
   routes() {
