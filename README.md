@@ -41,4 +41,4 @@ yarn dev
 | :---     | :---:  |    :---:      |    ---: |
 | /session       | POST | {email, password} | |
 | /recipient     | POST | {nome, rua, numero, complemento, estado, cep} | JWT |
-| /recipient/:id | PUT  | nome, rua, numero, complemento, estado, cep} | JWT |
+| /recipient/:id | PUT  | {nome, rua, numero, complemento, estado, cep} | JWT |
