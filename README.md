@@ -21,8 +21,7 @@ yarn
 ### Subindo o banco
 ```sh
 mkdir db
-chcon -Rt svirt_sandbox_file_t $(pwd)/db
-docker run -it -p 5432:5432 -v $(pwd)/db:/var/lib/postgresql/data postgres
+docker run -it -p 5432:5432 postgres
 ```
 
 ### Rodando migração e criando usuário Admin
