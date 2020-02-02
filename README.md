@@ -35,3 +35,10 @@ yarn sequelize db:seed:all
 ```sh
 yarn dev
 ```
+
+### Rotas
+| Resource | Method | Params (JSON) | Headers |
+| :---     | :---:  |    :---:      |    ---: |
+| /session       | POST | {email, password} | |
+| /recipient     | POST | {nome, rua, numero, complemento, estado, cep} | JWT |
+| /recipient/:id | PUT  | nome, rua, numero, complemento, estado, cep} | JWT |
