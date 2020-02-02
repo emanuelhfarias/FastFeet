@@ -8,8 +8,7 @@ class App {
     this.middlewares();
   }
 
-  middlewares() {
-  }
+  middlewares() {}
 
   routes() {
     this.server.use(routes);
