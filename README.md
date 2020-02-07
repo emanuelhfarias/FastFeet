@@ -7,9 +7,14 @@
 </h3>
 
 ### Desafio
-FastFeet é um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como objetivo a criação de uma aplicação para a gestão de uma transportadora fictícia.  
+FastFeet é um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como objetivo a criação de uma aplicação para a gestão de uma transportadora fictícia.
 
-[Link do desafio](https://github.com/Rocketseat/bootcamp-gostack-desafio-02)
+[Link 1 do desafio](https://github.com/Rocketseat/bootcamp-gostack-desafio-02)<br>
+[Link 2 do desafio](https://github.com/Rocketseat/bootcamp-gostack-desafio-03)
+
+### _Features_ até o momento
+* Admin consegue se autenticar via Token JWT
+* Admin consegue cadastrar Cadastrar e Editar destinatários.
 
 ### Instalando Dependências
 ```sh
