@@ -15,6 +15,8 @@ FastFeet é um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como
 ### _Features_ até o momento
 * Admin consegue se autenticar via Token JWT
 * Admin consegue cadastrar Cadastrar e Editar destinatários.
+* Admin consegue listar/cadastrar/editar/deletar entregadores.
+* Admin consegue listar/cadastrar/editar/deletar entregas.
 
 ### Instalando Dependências
 ```sh
