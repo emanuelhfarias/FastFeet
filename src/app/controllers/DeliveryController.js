@@ -13,6 +13,14 @@ class DeliveryController {
   }
 
   async store(req, res) {
+    const { recipient_id, deliveryman_id } = req.body;
+
+    if (!(recipient_id && deliveryman_id)) {
+      return res
+        .status(400)
+        .json({ error: 'Favor informar o entregador e destinatário' });
+    }
+
     const delivery = await Delivery.create(req.body);
     return res.json(delivery);
   }
