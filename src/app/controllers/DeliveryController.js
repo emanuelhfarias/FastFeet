@@ -1,5 +1,8 @@
 import { parseISO, isWithinInterval } from 'date-fns';
+import Deliveryman from '../models/Deliveryman';
+import Recipient from '../models/Recipient';
 import Delivery from '../models/Delivery';
+import Mail from '../../lib/Mail';
 
 class DeliveryController {
   async index(req, res) {
@@ -20,6 +23,16 @@ class DeliveryController {
         .status(400)
         .json({ error: 'Favor informar o entregador e destinatário' });
     }
+
+    const deliveryman = await Deliveryman.findByPk(deliveryman_id);
+    const recipient = await Recipient.findByPk(recipient_id);
+
+    // envia email pro entregador
+    await Mail.sendMail({
+      to: `${deliveryman.name} <${deliveryman.email}>`,
+      subject: 'Nova encomenda para entrega',
+      text: `${deliveryman.name}, você tem uma entrega para ${recipient.nome}`,
+    });
 
     const delivery = await Delivery.create(req.body);
     return res.json(delivery);
