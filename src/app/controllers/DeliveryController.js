@@ -1,3 +1,4 @@
+import { parseISO, isWithinInterval } from 'date-fns';
 import Delivery from '../models/Delivery';
 
 class DeliveryController {
@@ -22,6 +23,26 @@ class DeliveryController {
 
     if (!delivery) {
       return res.status(404).json({ error: 'delivery not found' });
+    }
+
+    // valida hora da retirada do produto pelo entregador
+    if (req.body.start_date) {
+      const startDate = parseISO(req.body.start_date);
+
+      const morning = new Date();
+      morning.setHours(8, 0, 0);
+
+      const afternoon = new Date();
+      afternoon.setHours(18, 0, 0);
+      const periodValid = isWithinInterval(startDate, {
+        start: morning,
+        end: afternoon,
+      });
+      if (!periodValid) {
+        return res.status(400).json({
+          error: 'Retirada do produto só pode ser feita das 08:00h às 18:00h',
+        });
+      }
     }
 
     const deliveryUpdated = await delivery.update(req.body);
