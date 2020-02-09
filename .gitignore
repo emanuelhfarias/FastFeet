@@ -105,3 +105,7 @@ dist
 
 # Development DB
 db/
+
+# uploaded media
+tmp/uploads/*
+!tmp/uploads/.gitkeep
