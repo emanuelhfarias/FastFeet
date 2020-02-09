@@ -7,16 +7,24 @@
 </h3>
 
 ### Desafio
-FastFeet é um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como objetivo a criação de uma aplicação para a gestão de uma transportadora fictícia.
+FastFeet é um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como objetivo a criação de uma aplicação para a gestão de uma transportadora f
 
-[Link 1 do desafio](https://github.com/Rocketseat/bootcamp-gostack-desafio-02)<br>
-[Link 2 do desafio](https://github.com/Rocketseat/bootcamp-gostack-desafio-03)
+
+<p align="center">
+  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-03">Parte 1 do desafio</a>
+  &nbsp;|&nbsp;
+  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-03">Parte 2 do desafio</a>
+</p>
 
 ### _Features_ até o momento
 * Admin consegue se autenticar via Token JWT
-* Admin consegue cadastrar Cadastrar e Editar destinatários.
-* Admin consegue listar/cadastrar/editar/deletar entregadores.
-* Admin consegue listar/cadastrar/editar/deletar entregas.
+* Cadastrar e Editar destinatários.
+* Listar/cadastrar/editar/deletar entregadores e entregas.
+* Visualização de encomendas
+* Alterar status das encomendas
+* Cadastrar problemas na entregas
+* Cancelar uma entrega
+* Envio de e-mail sobre novas entregas e cancelamento de encomendas.
 
 ### Instalando Dependências
 ```sh
@@ -48,3 +56,6 @@ yarn dev
 | /session       | POST | {email, password} | |
 | /recipient     | POST | {nome, rua, numero, complemento, estado, cep} | JWT |
 | /recipient/:id | PUT  | {nome, rua, numero, complemento, estado, cep} | JWT |
+
+### Roadmap
+[Kanban](https://github.com/emanuelhfarias/FastFeet/projects/1?fullscreen=true)
