@@ -6,7 +6,8 @@ import SessionController from './app/controllers/SessionController';
 import DeliveryController from './app/controllers/DeliveryController';
 import RecipientController from './app/controllers/RecipientController';
 import DeliverymanController from './app/controllers/DeliverymanController';
-import DeliverySignatureController from './app/controllers/DeliverySignatureController';
+import DeliveryPickupController from './app/controllers/DeliveryPickupController';
+import DeliveryFinishController from './app/controllers/DeliveryFinishController';
 import DeliverymanDeliveriesController from './app/controllers/DeliverymanDeliveriesController';
 import DeliverymanOpenDeliveriesController from './app/controllers/DeliverymanOpenDeliveriesController';
 import AuthMiddleware from './app/middlewares/auth';
@@ -37,10 +38,12 @@ routes.post('/delivery', DeliveryController.store);
 routes.put('/delivery/:id', DeliveryController.update);
 routes.delete('/delivery/:id', DeliveryController.delete);
 
-routes.post(
-  '/delivery/:id/signature',
+routes.put('/delivery/:id/pickup', DeliveryPickupController.update);
+
+routes.put(
+  '/delivery/:id/finish',
   upload.single('file'),
-  DeliverySignatureController.store
+  DeliveryFinishController.update
 );
 
 export default routes;
