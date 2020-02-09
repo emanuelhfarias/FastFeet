@@ -31,7 +31,17 @@ class DeliveryController {
     await Mail.sendMail({
       to: `${deliveryman.name} <${deliveryman.email}>`,
       subject: 'Nova encomenda para entrega',
-      text: `${deliveryman.name}, você tem uma entrega para ${recipient.nome}`,
+      template: 'new_delivery',
+      context: {
+        deliveryman: deliveryman.name,
+        recipient: recipient.nome,
+        produto: req.body.product,
+        rua: recipient.rua,
+        numero: recipient.numero,
+        complemento: recipient.complemento,
+        estado: recipient.estado,
+        cep: recipient.cep,
+      },
     });
 
     const delivery = await Delivery.create(req.body);
