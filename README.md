@@ -50,11 +50,7 @@ yarn dev
 ```
 
 ### Rotas
-| Resource | Method | Params (JSON) | Headers |
-| :---     | :---:  |    :---:      |    ---: |
-| /session       | POST | {email, password} | |
-| /recipient     | POST | {nome, rua, numero, complemento, estado, cep} | JWT |
-| /recipient/:id | PUT  | {nome, rua, numero, complemento, estado, cep} | JWT |
+[Wiki Routes](https://github.com/emanuelhfarias/FastFeet/wiki/Rotas)
 
 ### Roadmap
 [Kanban](https://github.com/emanuelhfarias/FastFeet/projects/1?fullscreen=true)
