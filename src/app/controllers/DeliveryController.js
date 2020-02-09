@@ -40,6 +40,7 @@ class DeliveryController {
         numero: recipient.numero,
         complemento: recipient.complemento,
         estado: recipient.estado,
+        cidade: recipient.cidade,
         cep: recipient.cep,
       },
     });
