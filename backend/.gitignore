@@ -107,5 +107,5 @@ dist
 db/
 
 # uploaded media
-backend/tmp/uploads/*
-!backend/tmp/uploads/.gitkeep
+tmp/uploads/*
+!tmp/uploads/.gitkeep
