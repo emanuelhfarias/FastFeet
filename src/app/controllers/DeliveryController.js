@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import Deliveryman from '../models/Deliveryman';
 import Recipient from '../models/Recipient';
 import Delivery from '../models/Delivery';
@@ -5,9 +6,13 @@ import Mail from '../../lib/Mail';
 
 class DeliveryController {
   async index(req, res) {
-    const { page = 1 } = req.query;
+    const { page = 1, q: name } = req.query;
+
+    const filter = name ? { where: { product: { [Op.iLike]: name } } } : {};
+
     const tamanhoPagina = 5;
     const deliveries = await Delivery.findAll({
+      ...filter,
       limit: tamanhoPagina,
       offset: (page - 1) * tamanhoPagina,
     });
