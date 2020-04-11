@@ -4,7 +4,6 @@ import Recipient from '../models/Recipient';
 class RecipientController {
   async index(req, res) {
     const { q: name } = req.query;
-    console.log(name);
 
     const filter = name ? { where: { nome: { [Op.iLike]: name } } } : {};
 
