@@ -1,8 +1,13 @@
+import { Op } from 'sequelize';
 import Deliveryman from '../models/Deliveryman';
 
 class DeliverymanController {
   async index(req, res) {
-    const deliverymen = await Deliveryman.findAll();
+    const { q: name } = req.query;
+
+    const filter = name ? { where: { name: { [Op.iLike]: name } } } : {};
+
+    const deliverymen = await Deliveryman.findAll({ ...filter });
     return res.json(deliverymen);
   }
 
