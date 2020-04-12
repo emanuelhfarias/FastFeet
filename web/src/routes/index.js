@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import Route from './Route';
 
 import SignIn from '../pages/SignIn';
 import Deliveries from '../pages/Deliveries';
@@ -11,10 +12,10 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/deliveries" component={Deliveries} />
-      <Route path="/deliverymen" component={Deliverymen} />
-      <Route path="/recipients" component={Recipients} />
-      <Route path="/problems" component={Problems} />
+      <Route path="/deliveries" component={Deliveries} isPrivate />
+      <Route path="/deliverymen" component={Deliverymen} isPrivate />
+      <Route path="/recipients" component={Recipients} isPrivate />
+      <Route path="/problems" component={Problems} isPrivate />
     </Switch>
   );
 }
