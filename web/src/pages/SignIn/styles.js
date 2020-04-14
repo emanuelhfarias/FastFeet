@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form as unformForm, Input as unformInput } from '@rocketseat/unform';
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -8,7 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const Form = styled.form`
+export const Form = styled(unformForm)`
   background: #fff;
   width: 360px;
   height: 425px;
@@ -45,16 +46,16 @@ export const Form = styled.form`
       text-transform: uppercase;
       font-size: 14px;
     }
-
-    input {
-      display: block;
-      width: 100%;
-      border: 1px solid #ddd;
-      height: 45px;
-      border-radius: 4px;
-      padding: 10px;
-      margin-top: 5px;
-      color: #444;
-    }
   }
+`;
+
+export const Input = styled(unformInput)`
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd;
+  height: 45px;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 5px;
+  color: #444;
 `;
