@@ -1,8 +1,16 @@
 import React from 'react';
+import * as Yup from 'yup';
 
 import { Wrapper, Form, Input } from './styles';
 
 import Logo from '../../assets/logo.png';
+
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email('Insira um email válido.')
+    .required('email obrigatório'),
+  password: Yup.string().required('senha obrigatória'),
+});
 
 export default function SignUp() {
   function handleSubmit(data) {
@@ -11,7 +19,7 @@ export default function SignUp() {
 
   return (
     <Wrapper>
-      <Form onSubmit={handleSubmit}>
+      <Form schema={schema} onSubmit={handleSubmit}>
         <img src={Logo} alt="FastFeet" />
 
         <div>
@@ -22,7 +30,6 @@ export default function SignUp() {
               id="email"
               name="email"
               placeholder="exemplo@email.com"
-              required
             />
           </label>
         </div>
@@ -35,7 +42,6 @@ export default function SignUp() {
               id="password"
               name="password"
               placeholder="********"
-              required
             />
           </label>
         </div>

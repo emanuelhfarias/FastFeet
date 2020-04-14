@@ -46,6 +46,13 @@ export const Form = styled(unformForm)`
       text-transform: uppercase;
       font-size: 14px;
     }
+
+    span {
+      color: #fb6f91;
+      align-self: flex-start;
+      margin: 0 0 10px;
+      font-weight: normal;
+    }
   }
 `;
 
