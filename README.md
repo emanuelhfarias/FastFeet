@@ -13,6 +13,8 @@ FastFeet é um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como
   <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-02/blob/4e6c5db70ac176f78545d5c8a71b5930f72dc13a/README.md">Etapa 1 do desafio</a>
   &nbsp;|&nbsp;
   <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-03/blob/d0c8f32222938cec6719637a1d21616531da9644/README.md">Etapa 2 do desafio</a>
+  &nbsp;|&nbsp;
+  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-09/blob/b40d281a5b31e3d70f037559d87c0017a8d04d2e/README.md">Etapa 3 do desafio</a>
 </p>
 
 ### _Features_ até o momento
