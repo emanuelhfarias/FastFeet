@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 import { store } from '../store';
+
+import DefaultLayout from '../pages/_layouts/default';
 
 export default function RouteWrapper({
   component: Component,
@@ -19,7 +21,18 @@ export default function RouteWrapper({
     return <Redirect to="/deliveries" />;
   }
 
-  return <Route {...rest} component={Component} />;
+  const Layout = signed ? DefaultLayout : Fragment;
+
+  return (
+    <Route
+      {...rest}
+      render={(props) => (
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      )}
+    />
+  );
 }
 
 RouteWrapper.propTypes = {
