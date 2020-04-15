@@ -1,7 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
 import { Wrapper, Form, Input } from './styles';
+
+import { signInRequest } from '../../store/modules/auth/actions';
 
 import Logo from '../../assets/logo.png';
 
@@ -13,8 +16,10 @@ const schema = Yup.object().shape({
 });
 
 export default function SignUp() {
-  function handleSubmit(data) {
-    console.log(data);
+  const dispatch = useDispatch();
+
+  function handleSubmit({ email, password }) {
+    dispatch(signInRequest(email, password));
   }
 
   return (
