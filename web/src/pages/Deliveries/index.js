@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { GoPlus } from 'react-icons/go';
 import {
   Content,
   Title,
@@ -16,7 +17,10 @@ export default function Deliveries() {
 
       <Actions>
         <SearchBox placeholder="Buscar por encomendas" />
-        <Button>Cadastrar</Button>
+        <Button>
+          <GoPlus size={18} />
+          Cadastrar
+        </Button>
       </Actions>
 
       <Table>

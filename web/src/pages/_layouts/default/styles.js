@@ -51,12 +51,18 @@ export const Table = styled.table`
 export const Button = styled.button.attrs({
   type: 'button',
 })`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+
   background: #7d40e7;
   border-radius: 4px;
   border: 0px;
   width: 142px;
   height: 36px;
   color: #fff;
+  font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
 `;
