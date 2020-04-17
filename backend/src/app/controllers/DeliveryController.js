@@ -13,6 +13,10 @@ class DeliveryController {
     const tamanhoPagina = 5;
     const deliveries = await Delivery.findAll({
       ...filter,
+      include: [
+        { model: Deliveryman, attributes: ['name'] },
+        { model: Recipient, attributes: ['nome', 'cidade', 'estado'] },
+      ],
       limit: tamanhoPagina,
       offset: (page - 1) * tamanhoPagina,
     });
