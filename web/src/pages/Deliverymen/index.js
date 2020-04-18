@@ -48,9 +48,9 @@ export default function Deliverymen() {
           </tr>
         </thead>
         <tbody>
-          {deliverymen.map((deliveryman, index) => (
+          {deliverymen.map((deliveryman) => (
             <tr key={deliveryman.id}>
-              <td>#{index + 1}</td>
+              <td>#{deliveryman.id}</td>
               <td>avatar</td>
               <td>{deliveryman.name}</td>
               <td>{deliveryman.email}</td>

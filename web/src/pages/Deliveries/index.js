@@ -52,9 +52,9 @@ export default function Deliveries() {
           </tr>
         </thead>
         <tbody>
-          {deliveries.map((delivery, index) => (
+          {deliveries.map((delivery) => (
             <tr key={delivery.id}>
-              <td>#{index + 1}</td>
+              <td>#{delivery.id}</td>
               <td>{delivery.product}</td>
               <td>{delivery.Recipient.nome}</td>
               <td>{delivery.Recipient.cidade}</td>
