@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { GoPlus } from 'react-icons/go';
-
 import api from '../../services/api';
 import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
 
@@ -10,9 +8,10 @@ import {
   Title,
   Actions,
   SearchBox,
-  Button,
   Table,
 } from '../_layouts/default/styles';
+
+import { ButtonsGroup, New } from '../../components/Buttons';
 
 export default function Recipients() {
   const [recipients, setRecipients] = useState([]);
@@ -32,10 +31,9 @@ export default function Recipients() {
 
       <Actions>
         <SearchBox placeholder="Buscar por destinatários" />
-        <Button>
-          <GoPlus size={18} />
-          Cadastrar
-        </Button>
+        <ButtonsGroup>
+          <New action={() => {}} />
+        </ButtonsGroup>
       </Actions>
 
       <Table>
@@ -56,9 +54,9 @@ export default function Recipients() {
               <td>
                 <ActionsMenu>
                   <>
-                    <ItemModal text="Visualizar" />
+                    <ItemModal text="Visualizar" component={<></>} />
                     <ItemLink text="Editar" to="/recipients/edit" />
-                    <ItemModal text="Excluir" />
+                    <ItemModal text="Excluir" component={<></>} />
                   </>
                 </ActionsMenu>
               </td>

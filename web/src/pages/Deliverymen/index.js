@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { GoPlus } from 'react-icons/go';
-
 import api from '../../services/api';
 import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
 
@@ -10,9 +8,10 @@ import {
   Title,
   Actions,
   SearchBox,
-  Button,
   Table,
 } from '../_layouts/default/styles';
+
+import { ButtonsGroup, New } from '../../components/Buttons';
 
 export default function Deliverymen() {
   const [deliverymen, setDeliverymen] = useState([]);
@@ -32,10 +31,9 @@ export default function Deliverymen() {
 
       <Actions>
         <SearchBox placeholder="Buscar por entregadores" />
-        <Button>
-          <GoPlus size={18} />
-          Cadastrar
-        </Button>
+        <ButtonsGroup>
+          <New action={() => {}} />
+        </ButtonsGroup>
       </Actions>
 
       <Table>
@@ -58,9 +56,9 @@ export default function Deliverymen() {
               <td>
                 <ActionsMenu>
                   <>
-                    <ItemModal text="Visualizar" />
-                    <ItemLink text="Editar" to="/deliverymen/edit" />
-                    <ItemModal text="Excluir" />
+                    <ItemModal text="Visualizar" component={<></>} />
+                    <ItemLink text="Editar" link="/deliverymen/edit" />
+                    <ItemModal text="Excluir" component={<></>} />
                   </>
                 </ActionsMenu>
               </td>

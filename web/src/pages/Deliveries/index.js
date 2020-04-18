@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { GoPlus } from 'react-icons/go';
-
 import api from '../../services/api';
 import { StatusBadger } from '../../components/StatusBadger';
 import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
@@ -11,9 +9,10 @@ import {
   Title,
   Actions,
   SearchBox,
-  Button,
   Table,
 } from '../_layouts/default/styles';
+
+import { ButtonsGroup, New } from '../../components/Buttons';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
@@ -33,10 +32,9 @@ export default function Deliveries() {
 
       <Actions>
         <SearchBox placeholder="Buscar por encomendas" />
-        <Button>
-          <GoPlus size={18} />
-          Cadastrar
-        </Button>
+        <ButtonsGroup>
+          <New action={() => {}} />
+        </ButtonsGroup>
       </Actions>
 
       <Table>
@@ -68,9 +66,9 @@ export default function Deliveries() {
               <td>
                 <ActionsMenu>
                   <>
-                    <ItemModal text="Visualizar" />
+                    <ItemModal text="Visualizar" component={<></>} />
                     <ItemLink text="Editar" to="/deliveries/edit" />
-                    <ItemModal text="Excluir" />
+                    <ItemModal text="Excluir" component={<></>} />
                   </>
                 </ActionsMenu>
               </td>

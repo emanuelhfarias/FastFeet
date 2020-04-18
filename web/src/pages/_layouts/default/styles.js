@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   max-width: 1000px;
   margin: 0 auto;
+  margin-top: 25px;
 `;
 
 export const Actions = styled.div`
@@ -17,7 +18,6 @@ export const Actions = styled.div`
 `;
 
 export const Title = styled.h1`
-  margin-top: 25px;
   font-size: 24px;
   color: #444;
 `;
@@ -48,23 +48,7 @@ export const Table = styled.table`
   }
 `;
 
-export const Button = styled.button.attrs({
-  type: 'button',
-})`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 12px;
-
-  background: #7d40e7;
-  border-radius: 4px;
-  border: 0px;
-  width: 142px;
-  height: 36px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: bold;
-  text-transform: uppercase;
+export const Form = styled.form`
+  background: #fff;
+  padding: 35px;
 `;
-
-export const BackButton = styled.div``;
