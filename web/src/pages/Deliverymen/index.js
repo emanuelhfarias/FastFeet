@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
@@ -14,6 +15,7 @@ import {
 import { ButtonsGroup, New } from '../../components/Buttons';
 
 export default function Deliverymen() {
+  const history = useHistory();
   const [deliverymen, setDeliverymen] = useState([]);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function Deliverymen() {
       <Actions>
         <SearchBox placeholder="Buscar por entregadores" />
         <ButtonsGroup>
-          <New action={() => {}} />
+          <New action={() => history.push('/deliverymen/new')} />
         </ButtonsGroup>
       </Actions>
 

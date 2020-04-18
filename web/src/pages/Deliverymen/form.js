@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 
@@ -29,14 +30,27 @@ export default function DeliverymenForm() {
     if (id) fetchDeliveryman();
   }, []);
 
+  function clearForm() {
+    setName('');
+    setEmail('');
+  }
+
   async function handleSave() {
-    await api.put(`/deliveryman/${id}`, { name, email });
+    const formData = { name, email };
+    if (id) {
+      await api.put(`/deliveryman/${id}`, formData);
+      toast.success('Entregador foi atualizado.');
+    } else {
+      await api.post(`/deliveryman`, formData);
+      toast.success('Entregador cadastrado com sucesso.');
+      clearForm();
+    }
   }
 
   return (
     <Content>
       <Actions>
-        <Title>Edição de Destinatário</Title>
+        <Title>{id ? 'Edição' : 'Cadastro'} de Destinatário</Title>
         <ButtonsGroup>
           <>
             <Back />
@@ -62,7 +76,6 @@ export default function DeliverymenForm() {
           <div>
             <span>Email</span>
             <Input
-              type="email"
               name="email"
               placeholder="email"
               value={email}
