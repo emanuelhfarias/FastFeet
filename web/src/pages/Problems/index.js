@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import { Content, Title, Table } from '../_layouts/default/styles';
-
 import api from '../../services/api';
+import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
+
+import { Content, Title, Table } from '../_layouts/default/styles';
 
 export default function Problems() {
   const [problems, setProblems] = useState([]);
@@ -33,7 +34,15 @@ export default function Problems() {
             <tr key={problem.id}>
               <td>#{problem.delivery_id}</td>
               <td>{problem.description}</td>
-              <td>...</td>
+              <td>
+                <ActionsMenu>
+                  <>
+                    <ItemModal text="Visualizar" />
+                    <ItemLink text="Editar" to="/problems/edit" />
+                    <ItemModal text="Excluir" />
+                  </>
+                </ActionsMenu>
+              </td>
             </tr>
           ))}
         </tbody>

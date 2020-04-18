@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { GoPlus } from 'react-icons/go';
 
 import api from '../../services/api';
-
 import { StatusBadger } from '../../components/StatusBadger';
+import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
 
 import {
   Content,
@@ -65,7 +65,15 @@ export default function Deliveries() {
                   canceledDate={delivery.canceled_at}
                 />
               </td>
-              <td>...</td>
+              <td>
+                <ActionsMenu>
+                  <>
+                    <ItemModal text="Visualizar" />
+                    <ItemLink text="Editar" to="/deliveries/edit" />
+                    <ItemModal text="Excluir" />
+                  </>
+                </ActionsMenu>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { GoPlus } from 'react-icons/go';
 
 import api from '../../services/api';
+import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
 
 import {
   Content,
@@ -12,8 +13,6 @@ import {
   Button,
   Table,
 } from '../_layouts/default/styles';
-
-import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
 
 export default function Deliverymen() {
   const [deliverymen, setDeliverymen] = useState([]);
