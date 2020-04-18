@@ -4,6 +4,8 @@ import { GoPlus } from 'react-icons/go';
 
 import api from '../../services/api';
 
+import { StatusBadger } from '../../components/StatusBadger';
+
 import {
   Content,
   Title,
@@ -24,13 +26,6 @@ export default function Deliveries() {
 
     fetchDeliveries();
   }, []);
-
-  function status(delivery) {
-    if (delivery.end_date !== null) return 'ENTREGUE';
-    if (delivery.canceled_at !== null) return 'CANCELADA';
-    if (delivery.end_date !== null && delivery.canceled_at) return 'RETIRADA';
-    return 'PENDENTE';
-  }
 
   return (
     <Content>
@@ -62,7 +57,12 @@ export default function Deliveries() {
               <td>{delivery.Recipient.nome}</td>
               <td>{delivery.Recipient.cidade}</td>
               <td>{delivery.Recipient.estado}</td>
-              <td>{status(delivery)}</td>
+              <td>
+                <StatusBadger
+                  endDate={delivery.end_date}
+                  canceledDate={delivery.canceled_at}
+                />
+              </td>
               <td>...</td>
             </tr>
           ))}
