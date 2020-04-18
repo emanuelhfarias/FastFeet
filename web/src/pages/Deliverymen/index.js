@@ -13,6 +13,8 @@ import {
   Table,
 } from '../_layouts/default/styles';
 
+import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
+
 export default function Deliverymen() {
   const [deliverymen, setDeliverymen] = useState([]);
 
@@ -54,7 +56,15 @@ export default function Deliverymen() {
               <td>avatar</td>
               <td>{deliveryman.name}</td>
               <td>{deliveryman.email}</td>
-              <td>...</td>
+              <td>
+                <ActionsMenu>
+                  <>
+                    <ItemModal text="Visualizar" />
+                    <ItemLink text="Editar" to="/deliverymen/edit" />
+                    <ItemModal text="Excluir" />
+                  </>
+                </ActionsMenu>
+              </td>
             </tr>
           ))}
         </tbody>
