@@ -3,9 +3,10 @@ import Deliveryman from '../models/Deliveryman';
 
 class DeliverymanController {
   async index(req, res) {
-    const { q: name } = req.query;
+    const { q: name, id } = req.query;
 
-    const filter = name ? { where: { name: { [Op.iLike]: name } } } : {};
+    let filter = name ? { where: { name: { [Op.iLike]: name } } } : {};
+    filter = id ? { ...filter, ...{ where: { id } } } : { ...filter };
 
     const deliverymen = await Deliveryman.findAll({ ...filter });
     return res.json(deliverymen);

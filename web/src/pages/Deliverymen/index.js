@@ -57,7 +57,10 @@ export default function Deliverymen() {
                 <ActionsMenu>
                   <>
                     <ItemModal text="Visualizar" component={<></>} />
-                    <ItemLink text="Editar" link="/deliverymen/edit" />
+                    <ItemLink
+                      text="Editar"
+                      link={`/deliverymen/${deliveryman.id}/edit`}
+                    />
                     <ItemModal text="Excluir" component={<></>} />
                   </>
                 </ActionsMenu>

@@ -50,5 +50,33 @@ export const Table = styled.table`
 
 export const Form = styled.form`
   background: #fff;
-  padding: 35px;
+  padding: 25px;
+  border-radius: 5px;
+`;
+
+export const Input = styled.input`
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd;
+  height: 45px;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 5px;
+  color: #444;
+`;
+
+export const GroupLine = styled.div`
+  display: flex;
+  width: 100%;
+
+  div {
+    width: 100%;
+    margin: 13px 0;
+    padding: 0 8px;
+  }
+
+  span {
+    color: #444;
+    font-weight: bold;
+  }
 `;
