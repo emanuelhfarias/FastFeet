@@ -41,17 +41,19 @@ export default function Deliveries() {
 
       <Table>
         <thead>
-          <th>ID</th>
-          <th>Encomenda</th>
-          <th>Destinatário</th>
-          <th>Cidade</th>
-          <th>Estado</th>
-          <th>Status</th>
-          <th>Ações</th>
+          <tr>
+            <th>ID</th>
+            <th>Encomenda</th>
+            <th>Destinatário</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
         </thead>
         <tbody>
           {deliveries.map((delivery, index) => (
-            <tr>
+            <tr key={delivery.id}>
               <td>#{index + 1}</td>
               <td>{delivery.product}</td>
               <td>{delivery.Recipient.nome}</td>

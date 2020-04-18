@@ -33,7 +33,8 @@ export const Content = styled.div`
 
 export const Link = styled(LinkDefault)`
   font-weight: bold;
-  color: ${(props) => (props.active ? '#666' : '#999')};
+  color: ${(props) =>
+    props.to === window.location.pathname ? '#666' : '#999'};
   margin: 12px;
   text-transform: uppercase;
 
