@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
-import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
+import {
+  ActionsMenu,
+  ItemLink,
+  ItemModal,
+  ItemModalExcluir,
+} from '../../components/ActionsMenu';
 
 import {
   Content,
@@ -27,6 +32,11 @@ export default function Deliverymen() {
 
     fetchDeliverymen();
   }, []);
+
+  async function deleteDeliverymen(id) {
+    await api.delete(`deliveryman/${id}`);
+    window.location.reload();
+  }
 
   return (
     <Content>
@@ -68,7 +78,10 @@ export default function Deliverymen() {
                       text="Editar"
                       link={`/deliverymen/${deliveryman.id}/edit`}
                     />
-                    <ItemModal text="Excluir" component={<></>} />
+                    <ItemModalExcluir
+                      text="Excluir"
+                      action={() => deleteDeliverymen(deliveryman.id)}
+                    />
                   </>
                 </ActionsMenu>
               </td>
