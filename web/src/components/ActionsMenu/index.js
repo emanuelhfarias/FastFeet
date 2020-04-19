@@ -57,6 +57,34 @@ export function ItemModal({ text, component, modalTitle }) {
   );
 }
 
+export function ItemModalExcluir({ text, action }) {
+  const modalOptions = {
+    animated: true,
+    title: 'Tem certeza?',
+    message: 'Excluir esse item será permanente.',
+  };
+
+  const [modal, toggle] = useModali(modalOptions);
+  modal.options.buttons = [
+    <Modali.Button label="Cancelar" isStyleCancel onClick={() => toggle()} />,
+    <Modali.Button
+      label="Excluir"
+      isStyleDestructive
+      onClick={(id) => action(id)}
+    />,
+  ];
+
+  return (
+    <>
+      <MenuItemModal onClick={() => toggle()}>
+        {icons[text]}
+        <span>{text}</span>
+      </MenuItemModal>
+      <Modali.Modal {...modal} />
+    </>
+  );
+}
+
 ActionsMenu.propTypes = {
   children: PropTypes.element.isRequired,
 };
@@ -80,4 +108,9 @@ ItemModal.propTypes = {
   text: PropTypes.string.isRequired,
   component: PropTypes.element.isRequired,
   modalTitle: PropTypes.string,
+};
+
+ItemModalExcluir.propTypes = {
+  text: PropTypes.string.isRequired,
+  action: PropTypes.func.isRequired,
 };
