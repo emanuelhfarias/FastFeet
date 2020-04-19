@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Modali, { useModali } from 'modali';
 import PropTypes from 'prop-types';
 
 import {
@@ -42,12 +43,17 @@ export function ItemLink({ text, link }) {
   );
 }
 
-export function ItemModal({ text, component }) {
+export function ItemModal({ text, component, modalTitle }) {
+  const [modal, toggleModal] = useModali({ title: modalTitle });
+
   return (
-    <MenuItemModal component={component}>
-      {icons[text]}
-      <span>{text}</span>
-    </MenuItemModal>
+    <>
+      <MenuItemModal onClick={() => toggleModal()}>
+        {icons[text]}
+        <span>{text}</span>
+      </MenuItemModal>
+      <Modali.Modal {...modal}>{component}</Modali.Modal>
+    </>
   );
 }
 
@@ -63,4 +69,15 @@ ItemLink.propTypes = {
 ItemModal.propTypes = {
   text: PropTypes.string.isRequired,
   component: PropTypes.element.isRequired,
+  modalTitle: PropTypes.string,
+};
+
+ItemModal.defaultProps = {
+  modalTitle: '',
+};
+
+ItemModal.propTypes = {
+  text: PropTypes.string.isRequired,
+  component: PropTypes.element.isRequired,
+  modalTitle: PropTypes.string,
 };

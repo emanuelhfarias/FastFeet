@@ -12,6 +12,7 @@ import {
   Table,
 } from '../_layouts/default/styles';
 
+import Show from './Show';
 import { ButtonsGroup, New } from '../../components/Buttons';
 
 export default function Deliverymen() {
@@ -58,7 +59,11 @@ export default function Deliverymen() {
               <td>
                 <ActionsMenu>
                   <>
-                    <ItemModal text="Visualizar" component={<></>} />
+                    <ItemModal
+                      text="Visualizar"
+                      component={<Show id={deliveryman.id} />}
+                      modalTitle="Entregador"
+                    />
                     <ItemLink
                       text="Editar"
                       link={`/deliverymen/${deliveryman.id}/edit`}
