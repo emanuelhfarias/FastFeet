@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modali, { useModali } from 'modali';
 import PropTypes from 'prop-types';
+
+import useComponentVisible from '../../hooks/useComponentVisible';
 
 import {
   Menu,
@@ -18,10 +20,14 @@ const icons = {
 };
 
 export function ActionsMenu({ children }) {
-  const [active, setActive] = useState(false);
+  const {
+    ref,
+    isComponentVisible,
+    setIsComponentVisible,
+  } = useComponentVisible(false);
 
   function toggleMenu() {
-    setActive(!active);
+    setIsComponentVisible(!isComponentVisible);
   }
 
   return (
@@ -29,7 +35,11 @@ export function ActionsMenu({ children }) {
       <button type="submit" onClick={toggleMenu}>
         ...
       </button>
-      <Menu active={active}>{children}</Menu>
+      {isComponentVisible && (
+        <Menu ref={ref} active={isComponentVisible}>
+          {children}
+        </Menu>
+      )}
     </>
   );
 }
