@@ -39,12 +39,20 @@ export const Table = styled.table`
     font-size: 16px;
   }
 
+  th:last-child {
+    text-align: left;
+  }
+
   td {
     font-size: 16px;
     color: #666;
     background: #fff;
     height: 57px;
     text-align: center;
+
+    &:last-child {
+      align: center;
+    }
   }
 `;
 

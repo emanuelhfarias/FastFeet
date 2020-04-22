@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { MdVisibility, MdEdit, MdDeleteForever } from 'react-icons/md';
+import { BsThreeDots } from 'react-icons/bs';
 
 export const Menu = styled.div`
   display: ${(props) => (props.active ? 'block' : 'none')};
@@ -65,4 +66,14 @@ export const EditIcon = styled(MdEdit)`
 
 export const DeleteIcon = styled(MdDeleteForever)`
   color: #de3b3b;
+`;
+
+export const ActionsButton = styled.button.attrs({
+  type: 'submit',
+})`
+  display: flex;
+`;
+
+export const DotsIcon = styled(BsThreeDots)`
+  font-size: 20px;
 `;

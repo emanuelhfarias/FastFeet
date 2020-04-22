@@ -8,6 +8,8 @@ import {
   Menu,
   MenuItemLink,
   MenuItemModal,
+  DotsIcon,
+  ActionsButton,
   ShowIcon,
   EditIcon,
   DeleteIcon,
@@ -32,9 +34,9 @@ export function ActionsMenu({ children }) {
 
   return (
     <>
-      <button type="submit" onClick={toggleMenu}>
-        ...
-      </button>
+      <ActionsButton onClick={toggleMenu}>
+        <DotsIcon />
+      </ActionsButton>
       {isComponentVisible && (
         <Menu ref={ref} active={isComponentVisible}>
           {children}
