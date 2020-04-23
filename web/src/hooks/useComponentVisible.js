@@ -17,6 +17,11 @@ export default function useComponentVisible(initialIsVisible) {
   };
 
   const handleClickOutside = (event) => {
+    const element = event.target.nodeName;
+    if (element === 'SPAN' || element === 'BUTTON') {
+      return;
+    }
+
     if (ref.current && !ref.current.contains(event.target)) {
       setIsComponentVisible(false);
     }
