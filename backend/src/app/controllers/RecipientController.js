@@ -28,6 +28,19 @@ class RecipientController {
     await recipient.update(req.body);
     return res.status(201).json(req.body);
   }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    const resource = await Recipient.findByPk(id);
+
+    if (!resource) {
+      return res.status(404).json({ error: 'Recipient not found' });
+    }
+
+    await resource.destroy();
+
+    return res.send();
+  }
 }
 
 export default new RecipientController();

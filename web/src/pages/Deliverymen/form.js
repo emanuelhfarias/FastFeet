@@ -28,7 +28,7 @@ export default function DeliverymenForm() {
       }
     }
     if (id) fetchDeliveryman();
-  }, []);
+  }, [id]);
 
   function clearForm() {
     setName('');

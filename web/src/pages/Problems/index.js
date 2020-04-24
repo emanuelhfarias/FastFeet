@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
-import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
+import {
+  ActionsMenu,
+  ItemLink,
+  ItemModalExcluir,
+} from '../../components/ActionsMenu';
 
 import { Content, Title, Table } from '../_layouts/default/styles';
 
 export default function Problems() {
+  const history = useHistory();
   const [problems, setProblems] = useState([]);
 
   useEffect(() => {
@@ -16,6 +22,11 @@ export default function Problems() {
 
     fetchProblems();
   }, []);
+
+  async function cancelarEncomenda(id) {
+    await api.delete(`problem/${id}/cancel-delivery`);
+    history.push('/deliveries');
+  }
 
   return (
     <Content>
@@ -35,10 +46,13 @@ export default function Problems() {
               <td>#{problem.delivery_id}</td>
               <td>{problem.description}</td>
               <td>
-                <ActionsMenu>
+                <ActionsMenu width="220px">
                   <>
                     <ItemLink text="Editar" to="/problems/edit" />
-                    <ItemModal text="Excluir" />
+                    <ItemModalExcluir
+                      text="Cancelar encomenda"
+                      action={() => cancelarEncomenda(problem.id)}
+                    />
                   </>
                 </ActionsMenu>
               </td>

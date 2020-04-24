@@ -19,9 +19,11 @@ const icons = {
   Visualizar: <ShowIcon />,
   Editar: <EditIcon />,
   Excluir: <DeleteIcon />,
+  'Cancelar encomenda': <DeleteIcon />,
 };
 
-export function ActionsMenu({ children }) {
+export function ActionsMenu(props) {
+  const { children, width } = props;
   const {
     ref,
     isComponentVisible,
@@ -38,7 +40,7 @@ export function ActionsMenu({ children }) {
         <DotsIcon />
       </ActionsButton>
       {isComponentVisible && (
-        <Menu ref={ref} active={isComponentVisible}>
+        <Menu ref={ref} width={width} active={isComponentVisible}>
           {children}
         </Menu>
       )}
@@ -99,6 +101,11 @@ export function ItemModalExcluir({ text, action }) {
 
 ActionsMenu.propTypes = {
   children: PropTypes.element.isRequired,
+  width: PropTypes.string,
+};
+
+ActionsMenu.defaultProps = {
+  width: '140px',
 };
 
 ItemLink.propTypes = {

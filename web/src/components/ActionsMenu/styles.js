@@ -9,7 +9,7 @@ export const Menu = styled.div`
   display: ${(props) => (props.active ? 'block' : 'none')};
   position: absolute;
   background: #fff;
-  width: 150px;
+  width: ${(props) => props.width};
   border: 1px solid #00000026;
   border-radius: 4px;
   padding: 15px 10px;

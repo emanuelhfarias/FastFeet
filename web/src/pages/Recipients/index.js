@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import api from '../../services/api';
-import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
+import {
+  ActionsMenu,
+  ItemLink,
+  ItemModal,
+  ItemModalExcluir,
+} from '../../components/ActionsMenu';
 
 import {
   Content,
@@ -25,6 +30,11 @@ export default function Recipients() {
 
     fetchRecipients();
   }, []);
+
+  async function deleteRecipient(id) {
+    await api.delete(`recipient/${id}`);
+    window.location.reload();
+  }
 
   return (
     <Content>
@@ -61,7 +71,10 @@ export default function Recipients() {
                       component={<Show id={recipient.id} />}
                     />
                     <ItemLink text="Editar" to="/recipients/edit" />
-                    <ItemModal text="Excluir" component={<></>} />
+                    <ItemModalExcluir
+                      text="Excluir"
+                      action={() => deleteRecipient(recipient.id)}
+                    />
                   </>
                 </ActionsMenu>
               </td>
