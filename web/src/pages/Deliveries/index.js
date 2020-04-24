@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import api from '../../services/api';
 import { StatusBadger } from '../../components/StatusBadger';
-import { ActionsMenu, ItemLink, ItemModal } from '../../components/ActionsMenu';
+import {
+  ActionsMenu,
+  ItemLink,
+  ItemModal,
+  ItemModalExcluir,
+} from '../../components/ActionsMenu';
 
 import {
   Content,
@@ -13,6 +18,7 @@ import {
 } from '../_layouts/default/styles';
 
 import { ButtonsGroup, New } from '../../components/Buttons';
+import Show from './Show';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
@@ -25,6 +31,11 @@ export default function Deliveries() {
 
     fetchDeliveries();
   }, []);
+
+  async function deleteDelivery(id) {
+    await api.delete(`delivery/${id}`);
+    window.location.reload();
+  }
 
   return (
     <Content>
@@ -66,9 +77,16 @@ export default function Deliveries() {
               <td>
                 <ActionsMenu>
                   <>
-                    <ItemModal text="Visualizar" component={<></>} />
+                    <ItemModal
+                      text="Visualizar"
+                      modalTitle="Encomendas"
+                      component={<Show id={delivery.id} />}
+                    />
                     <ItemLink text="Editar" to="/deliveries/edit" />
-                    <ItemModal text="Excluir" component={<></>} />
+                    <ItemModalExcluir
+                      text="Excluir"
+                      action={() => deleteDelivery(delivery.id)}
+                    />
                   </>
                 </ActionsMenu>
               </td>

@@ -6,9 +6,10 @@ import Mail from '../../lib/Mail';
 
 class DeliveryController {
   async index(req, res) {
-    const { page = 1, q: name } = req.query;
+    const { page = 1, q: name, id } = req.query;
 
-    const filter = name ? { where: { product: { [Op.iLike]: name } } } : {};
+    let filter = name ? { where: { product: { [Op.iLike]: name } } } : {};
+    filter = id ? { ...filter, ...{ where: { id } } } : { ...filter };
 
     const tamanhoPagina = 5;
     const deliveries = await Delivery.findAll({
