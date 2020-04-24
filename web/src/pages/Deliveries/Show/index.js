@@ -7,17 +7,17 @@ import api from '../../../services/api';
 import { ModalContent } from '../../_layouts/default/styles';
 
 export default function Show({ id }) {
-  const [deliveryman, setDeliveryman] = useState({});
+  const [delivery, setDelivery] = useState({});
 
   useEffect(() => {
-    async function fetchDeliveryman() {
-      const response = await api.get('deliveryman', { params: { id } });
+    async function fetchDelivery() {
+      const response = await api.get('delivery', { params: { id } });
       if (response.data) {
-        setDeliveryman(response.data[0]);
+        setDelivery(response.data[0]);
       }
     }
 
-    fetchDeliveryman();
+    fetchDelivery();
   }, [id]);
 
   function formatDate(date) {
@@ -30,16 +30,22 @@ export default function Show({ id }) {
   return (
     <ModalContent>
       <p>
-        <strong>ID:</strong> {deliveryman.id}
+        <strong>ID:</strong> {delivery.id}
       </p>
       <p>
-        <strong>Nome:</strong> {deliveryman.name}
+        <strong>Produto:</strong> {delivery.product}
       </p>
       <p>
-        <strong>E-mail:</strong> {deliveryman.email}
+        <strong>Entregador:</strong> {delivery?.Deliveryman?.name}
       </p>
       <p>
-        <strong>Data criação:</strong> {formatDate(deliveryman.createdAt)}
+        <strong>Destinatário:</strong> {delivery?.Recipient?.nome}
+      </p>
+      <p>
+        <strong>Cidade:</strong> {delivery?.Recipient?.cidade}
+      </p>
+      <p>
+        <strong>Data criação:</strong> {formatDate(delivery.createdAt)}
       </p>
     </ModalContent>
   );

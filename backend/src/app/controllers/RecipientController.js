@@ -3,9 +3,10 @@ import Recipient from '../models/Recipient';
 
 class RecipientController {
   async index(req, res) {
-    const { q: name } = req.query;
+    const { q: name, id } = req.query;
 
-    const filter = name ? { where: { nome: { [Op.iLike]: name } } } : {};
+    let filter = name ? { where: { nome: { [Op.iLike]: name } } } : {};
+    filter = id ? { ...filter, ...{ where: { id } } } : { ...filter };
 
     const recipients = await Recipient.findAll({ ...filter });
     return res.json(recipients);

@@ -37,7 +37,6 @@ export default function Problems() {
               <td>
                 <ActionsMenu>
                   <>
-                    <ItemModal text="Visualizar" />
                     <ItemLink text="Editar" to="/problems/edit" />
                     <ItemModal text="Excluir" />
                   </>

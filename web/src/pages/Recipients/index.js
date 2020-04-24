@@ -12,6 +12,7 @@ import {
 } from '../_layouts/default/styles';
 
 import { ButtonsGroup, New } from '../../components/Buttons';
+import Show from './Show';
 
 export default function Recipients() {
   const [recipients, setRecipients] = useState([]);
@@ -54,7 +55,11 @@ export default function Recipients() {
               <td>
                 <ActionsMenu>
                   <>
-                    <ItemModal text="Visualizar" component={<></>} />
+                    <ItemModal
+                      text="Visualizar"
+                      modalTitle="Destinatário"
+                      component={<Show id={recipient.id} />}
+                    />
                     <ItemLink text="Editar" to="/recipients/edit" />
                     <ItemModal text="Excluir" component={<></>} />
                   </>

@@ -13,6 +13,7 @@ import {
 } from '../_layouts/default/styles';
 
 import { ButtonsGroup, New } from '../../components/Buttons';
+import Show from './Show';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
@@ -66,7 +67,11 @@ export default function Deliveries() {
               <td>
                 <ActionsMenu>
                   <>
-                    <ItemModal text="Visualizar" component={<></>} />
+                    <ItemModal
+                      text="Visualizar"
+                      modalTitle="Encomendas"
+                      component={<Show id={delivery.id} />}
+                    />
                     <ItemLink text="Editar" to="/deliveries/edit" />
                     <ItemModal text="Excluir" component={<></>} />
                   </>
