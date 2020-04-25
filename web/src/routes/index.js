@@ -9,6 +9,7 @@ import Recipients from '../pages/Recipients';
 import Problems from '../pages/Problems';
 
 import DeliverymenForm from '../pages/Deliverymen/form';
+import RecipientForm from '../pages/Recipients/form';
 
 export default function Routes() {
   return (
@@ -24,7 +25,11 @@ export default function Routes() {
 
       <Route path="/deliveries" component={Deliveries} isPrivate />
       <Route path="/deliverymen" component={Deliverymen} isPrivate />
+
+      <Route path="/recipients/new" component={RecipientForm} isPrivate />
+      <Route path="/recipients/:id/edit" component={RecipientForm} isPrivate />
       <Route path="/recipients" component={Recipients} isPrivate />
+
       <Route path="/problems" component={Problems} isPrivate />
     </Switch>
   );

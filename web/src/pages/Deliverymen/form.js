@@ -50,7 +50,7 @@ export default function DeliverymenForm() {
   return (
     <Content>
       <Actions>
-        <Title>{id ? 'Edição' : 'Cadastro'} de Destinatário</Title>
+        <Title>{id ? 'Edição' : 'Cadastro'} de Entregador</Title>
         <ButtonsGroup>
           <>
             <Back />

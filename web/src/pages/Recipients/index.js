@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 import {
@@ -20,6 +21,7 @@ import { ButtonsGroup, New } from '../../components/Buttons';
 import Show from './Show';
 
 export default function Recipients() {
+  const history = useHistory();
   const [recipients, setRecipients] = useState([]);
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function Recipients() {
       <Actions>
         <SearchBox placeholder="Buscar por destinatários" />
         <ButtonsGroup>
-          <New action={() => {}} />
+          <New action={() => history.push('/recipients/new')} />
         </ButtonsGroup>
       </Actions>
 
@@ -70,7 +72,10 @@ export default function Recipients() {
                       modalTitle="Destinatário"
                       component={<Show id={recipient.id} />}
                     />
-                    <ItemLink text="Editar" to="/recipients/edit" />
+                    <ItemLink
+                      text="Editar"
+                      link={`/recipients/${recipient.id}/edit`}
+                    />
                     <ItemModalExcluir
                       text="Excluir"
                       action={() => deleteRecipient(recipient.id)}
