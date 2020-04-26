@@ -74,7 +74,7 @@ export function AvatarThumbnail({ avatar, name }) {
   if (avatar) {
     return (
       <AvatarThumb>
-        <img src={avatar.url} />
+        <img src={avatar.url} alt="avatar" />
       </AvatarThumb>
     );
   }
@@ -82,8 +82,10 @@ export function AvatarThumbnail({ avatar, name }) {
   return <SiglasThumb>{siglas(name)}</SiglasThumb>;
 }
 
-AvatarThumbnail.propropTypes = {
-  avatar: PropTypes.string,
+AvatarThumbnail.propTypes = {
+  avatar: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  }),
   name: PropTypes.string.isRequired,
 };
 
