@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
-import {
-  ActionsMenu,
-  ItemLink,
-  ItemModalExcluir,
-} from '../../components/ActionsMenu';
+import { ActionsMenu, ItemModalExcluir } from '../../components/ActionsMenu';
 
 import { Content, Title, Table } from '../_layouts/default/styles';
 
@@ -48,7 +44,6 @@ export default function Problems() {
               <td>
                 <ActionsMenu width="220px">
                   <>
-                    <ItemLink text="Editar" to="/problems/edit" />
                     <ItemModalExcluir
                       text="Cancelar encomenda"
                       action={() => cancelarEncomenda(problem.id)}
