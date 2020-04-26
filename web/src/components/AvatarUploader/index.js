@@ -2,15 +2,19 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
 
-import { Avatar, Siglas, NewAvatar } from './styles';
+import { Avatar, Siglas, NewAvatar, SiglasThumb, AvatarThumb } from './styles';
 
-export default function AvatarUploader({
-  id,
-  avatar,
-  setAvatar,
-  setFile,
-  fullName,
-}) {
+function siglas(fullName) {
+  if (fullName) {
+    return fullName
+      .match(/\b(\w)/g)
+      .join('')
+      .toUpperCase();
+  }
+  return '';
+}
+
+export function AvatarUploader({ id, avatar, setAvatar, setFile, fullName }) {
   const fileRef = useRef();
   const previewRef = useRef();
 
@@ -27,21 +31,15 @@ export default function AvatarUploader({
       setFile(e.currentTarget.files[0]);
       getBase64(e.currentTarget.files[0], (preview) => {
         setAvatar(preview);
-        previewRef.current.removeAttribute('hidden');
+        if (previewRef.current !== undefined) {
+          previewRef.current.removeAttribute('hidden');
+        }
       });
     }
   }
 
   function handlePreview() {
     fileRef.current.click();
-    // previewRef.current.removeAttribute('hidden');
-  }
-
-  function siglas() {
-    if (fullName) {
-      return fullName.match(/\b(\w)/g).join('');
-    }
-    return '';
   }
 
   return (
@@ -51,7 +49,7 @@ export default function AvatarUploader({
           (avatar ? (
             <img src={avatar} alt="avatar" />
           ) : (
-            <Siglas>{siglas()}</Siglas>
+            <Siglas>{siglas(fullName)}</Siglas>
           ))}
       </Avatar>
 
@@ -71,6 +69,27 @@ export default function AvatarUploader({
     </>
   );
 }
+
+export function AvatarThumbnail({ avatar, name }) {
+  if (avatar) {
+    return (
+      <AvatarThumb>
+        <img src={avatar.url} />
+      </AvatarThumb>
+    );
+  }
+
+  return <SiglasThumb>{siglas(name)}</SiglasThumb>;
+}
+
+AvatarThumbnail.propropTypes = {
+  avatar: PropTypes.string,
+  name: PropTypes.string.isRequired,
+};
+
+AvatarThumbnail.defaultProps = {
+  avatar: '',
+};
 
 AvatarUploader.propTypes = {
   id: PropTypes.string,

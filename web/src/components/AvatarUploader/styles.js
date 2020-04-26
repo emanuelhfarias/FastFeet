@@ -13,6 +13,32 @@ export const Avatar = styled.a`
   }
 `;
 
+export const AvatarThumb = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 38px;
+    height: 38px;
+    border: 1px dashed #a28fd0;
+    border-radius: 50%;
+  }
+`;
+
+export const SiglasThumb = styled.div`
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #a28fd0;
+  background: #f4effc;
+  width: 38px;
+  height: 38px;
+  border: 1px dashed #a28fd0;
+  border-radius: 50%;
+`;
+
 export const Siglas = styled.div`
   display: flex;
   justify-content: center;

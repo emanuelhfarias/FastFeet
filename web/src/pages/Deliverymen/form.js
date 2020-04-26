@@ -12,7 +12,7 @@ import {
   Form,
   Input,
 } from '../_layouts/default/styles';
-import AvatarUploader from '../../components/AvatarUploader';
+import { AvatarUploader } from '../../components/AvatarUploader';
 import { ButtonsGroup, Back, Save } from '../../components/Buttons';
 
 export default function DeliverymenForm() {

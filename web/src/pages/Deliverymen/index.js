@@ -9,6 +9,8 @@ import {
   ItemModalExcluir,
 } from '../../components/ActionsMenu';
 
+import { AvatarThumbnail } from '../../components/AvatarUploader';
+
 import {
   Content,
   Title,
@@ -63,7 +65,12 @@ export default function Deliverymen() {
           {deliverymen.map((deliveryman) => (
             <tr key={deliveryman.id}>
               <td>#{deliveryman.id}</td>
-              <td>avatar</td>
+              <td>
+                <AvatarThumbnail
+                  avatar={deliveryman.avatar}
+                  name={deliveryman.name}
+                />
+              </td>
               <td>{deliveryman.name}</td>
               <td>{deliveryman.email}</td>
               <td>
