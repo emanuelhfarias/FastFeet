@@ -27,6 +27,11 @@ routes.delete('/recipient/:id', RecipientController.delete);
 routes.get('/deliveryman', DeliverymanController.index);
 routes.post('/deliveryman', DeliverymanController.store);
 routes.put('/deliveryman/:id', DeliverymanController.update);
+routes.put(
+  '/deliveryman/:id/avatar',
+  upload.single('file'),
+  DeliverymanController.updateAvatar
+);
 routes.delete('/deliveryman/:id', DeliverymanController.delete);
 
 routes.get('/deliveryman/:id', DeliverymanOpenDeliveriesController.index);

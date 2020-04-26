@@ -1,4 +1,5 @@
 import { Op } from 'sequelize';
+import File from '../models/File';
 import Deliveryman from '../models/Deliveryman';
 
 class DeliverymanController {
@@ -41,6 +42,19 @@ class DeliverymanController {
     }
 
     await deliveryman.destroy();
+
+    return res.send();
+  }
+
+  async updateAvatar(req, res) {
+    const { id } = req.params;
+    const { originalname: name, filename: path } = req.file;
+    const file = await File.create({ name, path });
+
+    await Deliveryman.update(
+      { avatar_id: file.id, end_date: new Date() },
+      { where: { id } }
+    );
 
     return res.send();
   }

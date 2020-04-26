@@ -2,6 +2,7 @@ import { Op } from 'sequelize';
 import Deliveryman from '../models/Deliveryman';
 import Recipient from '../models/Recipient';
 import Delivery from '../models/Delivery';
+import File from '../models/File';
 import Mail from '../../lib/Mail';
 
 class DeliveryController {
@@ -15,7 +16,17 @@ class DeliveryController {
     const deliveries = await Delivery.findAll({
       ...filter,
       include: [
-        { model: Deliveryman, attributes: ['name'] },
+        {
+          model: Deliveryman,
+          attributes: ['name'],
+          include: [
+            {
+              model: File,
+              as: 'avatar',
+              attributes: ['id', 'path', 'url'],
+            },
+          ],
+        },
         { model: Recipient, attributes: ['nome', 'cidade', 'estado'] },
       ],
       limit: tamanhoPagina,
