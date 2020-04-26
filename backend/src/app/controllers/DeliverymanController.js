@@ -9,7 +9,16 @@ class DeliverymanController {
     let filter = name ? { where: { name: { [Op.iLike]: name } } } : {};
     filter = id ? { ...filter, ...{ where: { id } } } : { ...filter };
 
-    const deliverymen = await Deliveryman.findAll({ ...filter });
+    const deliverymen = await Deliveryman.findAll({
+      ...filter,
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
     return res.json(deliverymen);
   }
 
