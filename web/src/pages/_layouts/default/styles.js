@@ -73,6 +73,18 @@ export const Input = styled.input`
   color: #444;
 `;
 
+export const Select = styled.select`
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd;
+  height: 45px;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 5px;
+  color: #444;
+  background: #fff;
+`;
+
 export const GroupLine = styled.div`
   display: flex;
   width: 100%;

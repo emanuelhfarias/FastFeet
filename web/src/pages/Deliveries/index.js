@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 import { StatusBadger } from '../../components/StatusBadger';
@@ -21,6 +22,7 @@ import { ButtonsGroup, New } from '../../components/Buttons';
 import Show from './Show';
 
 export default function Deliveries() {
+  const history = useHistory();
   const [deliveries, setDeliveries] = useState([]);
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export default function Deliveries() {
       <Actions>
         <SearchBox placeholder="Buscar por encomendas" />
         <ButtonsGroup>
-          <New action={() => {}} />
+          <New action={() => history.push('/deliveries/new')} />
         </ButtonsGroup>
       </Actions>
 
@@ -82,7 +84,10 @@ export default function Deliveries() {
                       modalTitle="Encomendas"
                       component={<Show id={delivery.id} />}
                     />
-                    <ItemLink text="Editar" to="/deliveries/edit" />
+                    <ItemLink
+                      text="Editar"
+                      link={`/deliveries/${delivery.id}/edit`}
+                    />
                     <ItemModalExcluir
                       text="Excluir"
                       action={() => deleteDelivery(delivery.id)}
