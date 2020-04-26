@@ -68,12 +68,12 @@ export const DeleteIcon = styled(MdDeleteForever)`
   color: #de3b3b;
 `;
 
-export const ActionsButton = styled.button.attrs({
-  type: 'submit',
-})`
-  display: flex;
+export const ActionsButton = styled.a`
+  border: 0;
+  background: #fff;
 `;
 
 export const DotsIcon = styled(BsThreeDots)`
-  font-size: 20px;
+  font-size: 28px;
+  color: #c6c6c6;
 `;

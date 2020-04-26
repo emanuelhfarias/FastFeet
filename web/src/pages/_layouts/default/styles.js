@@ -41,6 +41,8 @@ export const Table = styled.table`
 
   th:last-child {
     text-align: left;
+    width: 80px;
+    padding-left: 25px;
   }
 
   td {
@@ -51,7 +53,7 @@ export const Table = styled.table`
     text-align: center;
 
     &:last-child {
-      align: center;
+      padding-left: 25px;
     }
   }
 `;
