@@ -32,7 +32,17 @@ class DeliveryController {
       limit: tamanhoPagina,
       offset: (page - 1) * tamanhoPagina,
     });
-    return res.json(deliveries);
+
+    const total = await Delivery.count();
+
+    return res.json({
+      pagination: {
+        total: Math.ceil(total / tamanhoPagina),
+        next: total > page * tamanhoPagina,
+        prev: page > 1,
+      },
+      records: deliveries,
+    });
   }
 
   async store(req, res) {

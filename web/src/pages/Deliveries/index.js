@@ -16,6 +16,7 @@ import {
   Actions,
   SearchBox,
   Table,
+  Pagination,
 } from '../_layouts/default/styles';
 
 import { ButtonsGroup, New } from '../../components/Buttons';
@@ -24,15 +25,27 @@ import Show from './Show';
 export default function Deliveries() {
   const history = useHistory();
   const [deliveries, setDeliveries] = useState([]);
+  const [prev, setPrev] = useState(false);
+  const [next, setNext] = useState(false);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(null);
+
+  async function fetchDeliveries(queyPage) {
+    const response = await api.get('delivery', { params: { page: queyPage } });
+    setDeliveries(response.data.records);
+    setPrev(response.data.pagination.prev);
+    setNext(response.data.pagination.next);
+    setTotal(response.data.pagination.total);
+  }
 
   useEffect(() => {
-    async function fetchDeliveries() {
-      const response = await api.get('delivery');
-      setDeliveries(response.data);
-    }
-
-    fetchDeliveries();
+    fetchDeliveries(page);
   }, []);
+
+  function changePage(newPage) {
+    setPage(newPage);
+    fetchDeliveries(newPage);
+  }
 
   async function deleteDelivery(id) {
     await api.delete(`delivery/${id}`);
@@ -99,6 +112,26 @@ export default function Deliveries() {
           ))}
         </tbody>
       </Table>
+
+      <Pagination>
+        <button
+          type="button"
+          onClick={() => changePage(page - 1)}
+          disabled={!prev}
+        >
+          Anterior
+        </button>
+        <p>
+          {page} de {total}
+        </p>
+        <button
+          type="button"
+          onClick={() => changePage(page + 1)}
+          disabled={!next}
+        >
+          Próximo
+        </button>
+      </Pagination>
     </Content>
   );
 }
