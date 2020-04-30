@@ -43,11 +43,12 @@ export const Link = styled(LinkDefault)`
   }
 `;
 
-export const LinkLogout = styled(LinkDefault)`
+export const LinkLogout = styled.a`
   font-weight: thin;
 
   &:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 `;
 
