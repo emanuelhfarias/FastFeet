@@ -13,6 +13,7 @@ class DeliveryController {
     filter = id ? { ...filter, ...{ where: { id } } } : { ...filter };
 
     const tamanhoPagina = 5;
+    if (page < 1) return res.json([]);
     const deliveries = await Delivery.findAll({
       ...filter,
       include: [

@@ -19,19 +19,29 @@ import {
   Table,
 } from '../_layouts/default/styles';
 
+import { Pagination } from '../../components/Pagination';
+
 import Show from './Show';
 import { ButtonsGroup, New } from '../../components/Buttons';
 
 export default function Deliverymen() {
   const history = useHistory();
   const [deliverymen, setDeliverymen] = useState([]);
+  const [paginationInfo, setPaginationInfo] = useState({
+    prev: false,
+    next: false,
+    total: 0,
+  });
+
+  async function fetchDeliverymen(queyPage = 1) {
+    const response = await api.get('deliveryman', {
+      params: { page: queyPage },
+    });
+    setDeliverymen(response.data.records);
+    setPaginationInfo(response.data.pagination);
+  }
 
   useEffect(() => {
-    async function fetchDeliverymen() {
-      const response = await api.get('deliveryman');
-      setDeliverymen(response.data);
-    }
-
     fetchDeliverymen();
   }, []);
 
@@ -96,6 +106,8 @@ export default function Deliverymen() {
           ))}
         </tbody>
       </Table>
+
+      <Pagination info={paginationInfo} fetchData={fetchDeliverymen} />
     </Content>
   );
 }

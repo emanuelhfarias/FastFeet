@@ -4,11 +4,13 @@ import Deliveryman from '../models/Deliveryman';
 
 class DeliverymanController {
   async index(req, res) {
-    const { q: name, id } = req.query;
+    const { page = 1, q: name, id } = req.query;
 
     let filter = name ? { where: { name: { [Op.iLike]: name } } } : {};
     filter = id ? { ...filter, ...{ where: { id } } } : { ...filter };
 
+    const tamanhoPagina = 5;
+    if (page < 1) return res.json([]);
     const deliverymen = await Deliveryman.findAll({
       ...filter,
       include: [
@@ -18,8 +20,20 @@ class DeliverymanController {
           attributes: ['id', 'path', 'url'],
         },
       ],
+      limit: tamanhoPagina,
+      offset: (page - 1) * tamanhoPagina,
     });
-    return res.json(deliverymen);
+
+    const total = await Deliveryman.count();
+
+    return res.json({
+      pagination: {
+        total: Math.ceil(total / tamanhoPagina),
+        next: total > page * tamanhoPagina,
+        prev: page > 1,
+      },
+      records: deliverymen,
+    });
   }
 
   async store(req, res) {
