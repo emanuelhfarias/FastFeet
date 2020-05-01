@@ -3,13 +3,29 @@ import Recipient from '../models/Recipient';
 
 class RecipientController {
   async index(req, res) {
-    const { q: name, id } = req.query;
+    const { page = 1, q: name, id } = req.query;
 
     let filter = name ? { where: { nome: { [Op.iLike]: name } } } : {};
     filter = id ? { ...filter, ...{ where: { id } } } : { ...filter };
 
-    const recipients = await Recipient.findAll({ ...filter });
-    return res.json(recipients);
+    const tamanhoPagina = 5;
+    if (page < 1) return res.json([]);
+    const recipients = await Recipient.findAll({
+      ...filter,
+      limit: tamanhoPagina,
+      offset: (page - 1) * tamanhoPagina,
+    });
+
+    const total = await Recipient.count();
+
+    return res.json({
+      pagination: {
+        total: Math.ceil(total / tamanhoPagina),
+        next: total > page * tamanhoPagina,
+        prev: page > 1,
+      },
+      records: recipients,
+    });
   }
 
   async store(req, res) {

@@ -17,19 +17,27 @@ import {
   Table,
 } from '../_layouts/default/styles';
 
+import { Pagination } from '../../components/Pagination';
+
 import { ButtonsGroup, New } from '../../components/Buttons';
 import Show from './Show';
 
 export default function Recipients() {
   const history = useHistory();
   const [recipients, setRecipients] = useState([]);
+  const [paginationInfo, setPaginationInfo] = useState({
+    prev: false,
+    next: false,
+    total: 0,
+  });
+
+  async function fetchRecipients(queyPage = 1) {
+    const response = await api.get('recipient', { params: { page: queyPage } });
+    setRecipients(response.data.records);
+    setPaginationInfo(response.data.pagination);
+  }
 
   useEffect(() => {
-    async function fetchRecipients() {
-      const response = await api.get('recipient');
-      setRecipients(response.data);
-    }
-
     fetchRecipients();
   }, []);
 
@@ -87,6 +95,8 @@ export default function Recipients() {
           ))}
         </tbody>
       </Table>
+
+      <Pagination info={paginationInfo} fetchData={fetchRecipients} />
     </Content>
   );
 }
