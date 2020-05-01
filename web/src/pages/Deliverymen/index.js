@@ -33,12 +33,18 @@ export default function Deliverymen() {
     total: 0,
   });
 
-  async function fetchDeliverymen(queyPage = 1) {
+  async function fetchDeliverymen(queyPage = 1, name = null) {
     const response = await api.get('deliveryman', {
-      params: { page: queyPage },
+      params: { page: queyPage, q: name },
     });
     setDeliverymen(response.data.records);
     setPaginationInfo(response.data.pagination);
+  }
+
+  function keyPress(e) {
+    if (e.keyCode === 13) {
+      fetchDeliverymen(1, e.target.value);
+    }
   }
 
   useEffect(() => {
@@ -55,7 +61,7 @@ export default function Deliverymen() {
       <Title>Gerenciando Entregadores</Title>
 
       <Actions>
-        <SearchBox placeholder="Buscar por entregadores" />
+        <SearchBox onKeyDown={keyPress} placeholder="Buscar por entregadores" />
         <ButtonsGroup>
           <New action={() => history.push('/deliverymen/new')} />
         </ButtonsGroup>
