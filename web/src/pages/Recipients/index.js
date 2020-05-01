@@ -31,8 +31,10 @@ export default function Recipients() {
     total: 0,
   });
 
-  async function fetchRecipients(queyPage = 1) {
-    const response = await api.get('recipient', { params: { page: queyPage } });
+  async function fetchRecipients(queyPage = 1, name = null) {
+    const response = await api.get('recipient', {
+      params: { page: queyPage, q: name },
+    });
     setRecipients(response.data.records);
     setPaginationInfo(response.data.pagination);
   }
@@ -46,12 +48,21 @@ export default function Recipients() {
     window.location.reload();
   }
 
+  function keyPress(e) {
+    if (e.keyCode === 13) {
+      fetchRecipients(1, e.target.value);
+    }
+  }
+
   return (
     <Content>
       <Title>Gerenciando Destinatários</Title>
 
       <Actions>
-        <SearchBox placeholder="Buscar por destinatários" />
+        <SearchBox
+          onKeyDown={keyPress}
+          placeholder="Buscar por destinatários"
+        />
         <ButtonsGroup>
           <New action={() => history.push('/recipients/new')} />
         </ButtonsGroup>
