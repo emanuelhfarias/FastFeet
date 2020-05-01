@@ -32,10 +32,18 @@ export default function Deliveries() {
     total: 0,
   });
 
-  async function fetchDeliveries(queyPage = 1) {
-    const response = await api.get('delivery', { params: { page: queyPage } });
+  async function fetchDeliveries(queyPage = 1, name = null) {
+    const response = await api.get('delivery', {
+      params: { page: queyPage, q: name },
+    });
     setDeliveries(response.data.records);
     setPaginationInfo(response.data.pagination);
+  }
+
+  function keyPress(e) {
+    if (e.keyCode === 13) {
+      fetchDeliveries(1, e.target.value);
+    }
   }
 
   useEffect(() => {
@@ -52,7 +60,7 @@ export default function Deliveries() {
       <Title>Gerenciando Encomendas</Title>
 
       <Actions>
-        <SearchBox placeholder="Buscar por encomendas" />
+        <SearchBox onKeyDown={keyPress} placeholder="Buscar por encomendas" />
         <ButtonsGroup>
           <New action={() => history.push('/deliveries/new')} />
         </ButtonsGroup>
