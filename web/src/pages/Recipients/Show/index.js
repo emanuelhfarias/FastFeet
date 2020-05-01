@@ -12,8 +12,8 @@ export default function Show({ id }) {
   useEffect(() => {
     async function fetchRecipient() {
       const response = await api.get('recipient', { params: { id } });
-      if (response.data) {
-        setRecipient(response.data[0]);
+      if (response.data.records) {
+        setRecipient(response.data.records[0]);
       }
     }
 

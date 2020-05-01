@@ -28,10 +28,10 @@ export default function DeliveryForm() {
   useEffect(() => {
     async function fetchRecipient() {
       const response = await api.get('delivery', { params: { id } });
-      if (response.data) {
-        setEntregador(response.data[0].deliveryman_id);
-        setDestinatario(response.data[0].recipient_id);
-        setProduto(response.data[0].product);
+      if (response.data.records) {
+        setEntregador(response.data.records[0].deliveryman_id);
+        setDestinatario(response.data.records[0].recipient_id);
+        setProduto(response.data.records[0].product);
       }
     }
     if (id) fetchRecipient();
@@ -40,7 +40,7 @@ export default function DeliveryForm() {
   useEffect(() => {
     async function fetchEntregadores() {
       const response = await api.get('deliveryman');
-      if (response.data) setEntregadores(response.data);
+      if (response.data.records) setEntregadores(response.data.records);
     }
     fetchEntregadores();
   }, []);
@@ -48,7 +48,7 @@ export default function DeliveryForm() {
   useEffect(() => {
     async function fetchDestinatarios() {
       const response = await api.get('recipient');
-      if (response.data) setDestinatarios(response.data);
+      if (response.data.records) setDestinatarios(response.data.records);
     }
     fetchDestinatarios();
   }, []);

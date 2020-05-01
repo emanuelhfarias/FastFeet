@@ -26,11 +26,11 @@ export default function DeliverymenForm() {
   useEffect(() => {
     async function fetchDeliveryman() {
       const response = await api.get('deliveryman', { params: { id } });
-      if (response.data) {
-        setName(response.data[0].name);
-        setEmail(response.data[0].email);
-        if (response.data[0].avatar) {
-          setAvatar(response.data[0].avatar.url);
+      if (response.data.records) {
+        setName(response.data.records[0].name);
+        setEmail(response.data.records[0].email);
+        if (response.data.records[0].avatar) {
+          setAvatar(response.data.records[0].avatar.url);
         }
       }
     }

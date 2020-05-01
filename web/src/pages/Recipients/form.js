@@ -27,14 +27,14 @@ export default function RecipientForm() {
   useEffect(() => {
     async function fetchRecipient() {
       const response = await api.get('recipient', { params: { id } });
-      if (response.data) {
-        setNome(response.data[0].nome);
-        setRua(response.data[0].rua);
-        setNumero(response.data[0].numero);
-        setComplemento(response.data[0].complemento);
-        setCidade(response.data[0].cidade);
-        setEstado(response.data[0].estado);
-        setCep(response.data[0].cep);
+      if (response.data.records) {
+        setNome(response.data.records[0].nome);
+        setRua(response.data.records[0].rua);
+        setNumero(response.data.records[0].numero);
+        setComplemento(response.data.records[0].complemento);
+        setCidade(response.data.records[0].cidade);
+        setEstado(response.data.records[0].estado);
+        setCep(response.data.records[0].cep);
       }
     }
     if (id) fetchRecipient();

@@ -12,8 +12,8 @@ export default function Show({ id }) {
   useEffect(() => {
     async function fetchDelivery() {
       const response = await api.get('delivery', { params: { id } });
-      if (response.data) {
-        setDelivery(response.data[0]);
+      if (response.data.records) {
+        setDelivery(response.data.records[0]);
       }
     }
 
