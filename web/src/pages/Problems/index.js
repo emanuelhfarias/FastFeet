@@ -6,16 +6,26 @@ import { ActionsMenu, ItemModalExcluir } from '../../components/ActionsMenu';
 
 import { Content, Title, Table } from '../_layouts/default/styles';
 
+import { Pagination } from '../../components/Pagination';
+
 export default function Problems() {
   const history = useHistory();
   const [problems, setProblems] = useState([]);
+  const [paginationInfo, setPaginationInfo] = useState({
+    prev: false,
+    next: false,
+    total: 0,
+  });
+
+  async function fetchProblems(queyPage = 1) {
+    const response = await api.get('/delivery/problems', {
+      params: { page: queyPage },
+    });
+    setProblems(response.data.records);
+    setPaginationInfo(response.data.pagination);
+  }
 
   useEffect(() => {
-    async function fetchProblems() {
-      const response = await api.get('/delivery/problems');
-      setProblems(response.data);
-    }
-
     fetchProblems();
   }, []);
 
@@ -55,6 +65,8 @@ export default function Problems() {
           ))}
         </tbody>
       </Table>
+
+      <Pagination info={paginationInfo} fetchData={fetchProblems} />
     </Content>
   );
 }
