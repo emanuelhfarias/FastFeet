@@ -48,10 +48,8 @@ export default function Recipients() {
     window.location.reload();
   }
 
-  function keyPress(e) {
-    if (e.keyCode === 13) {
-      fetchRecipients(1, e.target.value);
-    }
+  function search(e) {
+    fetchRecipients(1, e.target.value);
   }
 
   return (
@@ -59,10 +57,7 @@ export default function Recipients() {
       <Title>Gerenciando Destinatários</Title>
 
       <Actions>
-        <SearchBox
-          onKeyDown={keyPress}
-          placeholder="Buscar por destinatários"
-        />
+        <SearchBox onInput={search} placeholder="Buscar por destinatários" />
         <ButtonsGroup>
           <New action={() => history.push('/recipients/new')} />
         </ButtonsGroup>

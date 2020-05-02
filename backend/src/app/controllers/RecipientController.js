@@ -5,7 +5,7 @@ class RecipientController {
   async index(req, res) {
     const { page = 1, q: name, id } = req.query;
 
-    let filter = name ? { where: { nome: { [Op.iLike]: name } } } : {};
+    let filter = name ? { where: { nome: { [Op.iLike]: `${name}%` } } } : {};
     filter = id ? { ...filter, ...{ where: { id } } } : { ...filter };
 
     const tamanhoPagina = 5;

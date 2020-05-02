@@ -41,10 +41,8 @@ export default function Deliverymen() {
     setPaginationInfo(response.data.pagination);
   }
 
-  function keyPress(e) {
-    if (e.keyCode === 13) {
-      fetchDeliverymen(1, e.target.value);
-    }
+  function search(e) {
+    fetchDeliverymen(1, e.target.value);
   }
 
   useEffect(() => {
@@ -61,7 +59,7 @@ export default function Deliverymen() {
       <Title>Gerenciando Entregadores</Title>
 
       <Actions>
-        <SearchBox onKeyDown={keyPress} placeholder="Buscar por entregadores" />
+        <SearchBox onInput={search} placeholder="Buscar por entregadores" />
         <ButtonsGroup>
           <New action={() => history.push('/deliverymen/new')} />
         </ButtonsGroup>
