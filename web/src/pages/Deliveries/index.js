@@ -40,10 +40,8 @@ export default function Deliveries() {
     setPaginationInfo(response.data.pagination);
   }
 
-  function keyPress(e) {
-    if (e.keyCode === 13) {
-      fetchDeliveries(1, e.target.value);
-    }
+  function search(e) {
+    fetchDeliveries(1, e.target.value);
   }
 
   useEffect(() => {
@@ -60,7 +58,7 @@ export default function Deliveries() {
       <Title>Gerenciando Encomendas</Title>
 
       <Actions>
-        <SearchBox onKeyDown={keyPress} placeholder="Buscar por encomendas" />
+        <SearchBox onInput={search} placeholder="Buscar por encomendas" />
         <ButtonsGroup>
           <New action={() => history.push('/deliveries/new')} />
         </ButtonsGroup>
