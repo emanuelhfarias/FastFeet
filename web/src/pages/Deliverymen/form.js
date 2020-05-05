@@ -11,6 +11,8 @@ import {
   GroupLine,
   Form,
   Input,
+  Field,
+  FieldLabel,
 } from '../_layouts/default/styles';
 import { AvatarUploader } from '../../components/AvatarUploader';
 import { ButtonsGroup, Back, Save } from '../../components/Buttons';
@@ -93,27 +95,27 @@ export default function DeliverymenForm() {
         />
 
         <GroupLine>
-          <div>
-            <span>Nome</span>
+          <Field>
+            <FieldLabel>Nome</FieldLabel>
             <Input
               name="name"
               placeholder="Nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-          </div>
+          </Field>
         </GroupLine>
 
         <GroupLine>
-          <div>
-            <span>Email</span>
+          <Field>
+            <FieldLabel>Email</FieldLabel>
             <Input
               name="email"
               placeholder="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-          </div>
+          </Field>
         </GroupLine>
       </Form>
     </Content>

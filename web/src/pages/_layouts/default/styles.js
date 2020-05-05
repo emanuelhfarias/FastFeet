@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import AsyncSelect from 'react-select/async';
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -71,36 +72,25 @@ export const Input = styled.input`
   height: 45px;
   border-radius: 4px;
   padding: 10px;
-  margin-top: 5px;
   color: #444;
 `;
 
-export const Select = styled.select`
-  display: block;
-  width: 100%;
-  border: 1px solid #ddd;
-  height: 45px;
-  border-radius: 4px;
-  padding: 10px;
-  margin-top: 5px;
-  color: #444;
-  background: #fff;
-`;
+export const Select = styled(AsyncSelect)``;
 
 export const GroupLine = styled.div`
   display: flex;
+`;
+
+export const Field = styled.div`
   width: 100%;
+  margin: 13px 0;
+  padding: 0 8px;
+`;
 
-  div {
-    width: 100%;
-    margin: 13px 0;
-    padding: 0 8px;
-  }
-
-  span {
-    color: #444;
-    font-weight: bold;
-  }
+export const FieldLabel = styled.div`
+  color: #444;
+  font-weight: bold;
+  margin-bottom: 5px;
 `;
 
 export const ModalContent = styled.div`

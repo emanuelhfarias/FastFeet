@@ -11,6 +11,8 @@ import {
   GroupLine,
   Form,
   Input,
+  Field,
+  FieldLabel,
 } from '../_layouts/default/styles';
 import { ButtonsGroup, Back, Save } from '../../components/Buttons';
 
@@ -76,75 +78,75 @@ export default function RecipientForm() {
 
       <Form>
         <GroupLine>
-          <div>
-            <span>Nome</span>
+          <Field>
+            <FieldLabel>Nome</FieldLabel>
             <Input
               name="nome"
               placeholder="Nome"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
             />
-          </div>
+          </Field>
         </GroupLine>
 
         <GroupLine>
-          <div>
-            <span>Rua</span>
+          <Field>
+            <FieldLabel>Rua</FieldLabel>
             <Input
               name="rua"
               placeholder="rua"
               value={rua}
               onChange={(e) => setRua(e.target.value)}
             />
-          </div>
-          <div>
-            <span>Numero</span>
+          </Field>
+          <Field>
+            <FieldLabel>Numero</FieldLabel>
             <Input
               name="numero"
               placeholder="numero"
               value={numero}
               onChange={(e) => setNumero(e.target.value)}
             />
-          </div>
-          <div>
-            <span>Complemento</span>
+          </Field>
+          <Field>
+            <FieldLabel>Complemento</FieldLabel>
             <Input
               name="complemento"
               placeholder="complemento"
               value={complemento}
               onChange={(e) => setComplemento(e.target.value)}
             />
-          </div>
+          </Field>
         </GroupLine>
 
         <GroupLine>
-          <div>
-            <span>Cidade</span>
+          <Field>
+            <FieldLabel>Cidade</FieldLabel>
             <Input
               name="cidade"
               placeholder="cidade"
               value={cidade}
               onChange={(e) => setCidade(e.target.value)}
             />
-          </div>
-          <div>
-            <span>Estado</span>
+          </Field>
+          <Field>
+            <FieldLabel>Estado</FieldLabel>
             <Input
               name="estado"
               placeholder="estado"
               value={estado}
               onChange={(e) => setEstado(e.target.value)}
             />
-          </div>
-          <div>
-            <span>CEP</span>
+          </Field>
+          <Field>
+            <FieldLabel>CEP</FieldLabel>
             <Input
               name="cep"
               placeholder="cep"
               value={cep}
               onChange={(e) => setCep(e.target.value)}
             />
-          </div>
+          </Field>
         </GroupLine>
       </Form>
     </Content>
