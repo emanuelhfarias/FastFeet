@@ -45,14 +45,24 @@ export default function DeliveryForm() {
     if (id) fetchRecipient();
   }, [id]);
 
-  async function fetchEntregadores() {
-    const response = await api.get('deliveryman');
-    if (response.data.records) setEntregadores(response.data.records);
+  async function fetchEntregadores(searchTerm = null) {
+    let data = {};
+    if (searchTerm) data = { q: searchTerm };
+    const response = await api.get('deliveryman', { params: data });
+    if (!searchTerm && response.data.records) {
+      setEntregadores(response.data.records);
+    }
+    return response.data.records;
   }
 
-  async function fetchDestinatarios() {
-    const response = await api.get('recipient');
-    if (response.data.records) setDestinatarios(response.data.records);
+  async function fetchDestinatarios(searchTerm = null) {
+    let data = {};
+    if (searchTerm) data = { q: searchTerm };
+    const response = await api.get('recipient', { params: data });
+    if (!searchTerm && response.data.records) {
+      setDestinatarios(response.data.records);
+    }
+    return response.data.records;
   }
 
   useEffect(() => {
@@ -85,18 +95,6 @@ export default function DeliveryForm() {
     }
   }
 
-  const searchEntregador = (inputValue) => {
-    return entregadores.filter((item) =>
-      item.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-  };
-
-  const searchDestinatario = (inputValue) => {
-    return entregadores.filter((item) =>
-      item.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-  };
-
   return (
     <Content>
       <Actions>
@@ -120,9 +118,7 @@ export default function DeliveryForm() {
               loadingMessage={() => 'carregando...'}
               getOptionLabel={(option) => `${option.name}`}
               getOptionValue={(option) => `${option.id}`}
-              loadOptions={(inputValue, callback) =>
-                callback(searchEntregador(inputValue))
-              }
+              loadOptions={(inputValue) => fetchEntregadores(inputValue)}
               defaultOptions={entregadores}
               value={entregador}
               onChange={(e) => setEntregador({ id: e.id, name: e.name })}
@@ -137,9 +133,7 @@ export default function DeliveryForm() {
               loadingMessage={() => 'carregando...'}
               getOptionLabel={(option) => `${option.nome}`}
               getOptionValue={(option) => `${option.id}`}
-              loadOptions={(inputValue, callback) =>
-                callback(searchDestinatario(inputValue))
-              }
+              loadOptions={(inputValue) => fetchDestinatarios(inputValue)}
               defaultOptions={destinatarios}
               value={destinatario}
               onChange={(e) => setDestinatario({ id: e.id, nome: e.nome })}
