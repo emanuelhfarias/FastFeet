@@ -8,7 +8,7 @@ services:
       context: .
       dockerfile: Dockerfile
     working_dir: /app/web
-    command: yarn start
+    command: bash -c 'yarn && yarn start'
     stdin_open: true
     volumes:
       - '.:/app'
@@ -21,7 +21,7 @@ services:
     container_name: dockerized-node-app
     image: fastfeet_app
     working_dir: /app/backend
-    command: yarn dev
+    command: bash -c 'yarn && yarn dev'
     stdin_open: true
     ports:
       - '3333:3333'
@@ -39,3 +39,14 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+  db_seeding:
+    container_name: db-seeding
+    image: fastfeet_app
+    working_dir: /app/backend
+    command: bash -c 'yarn && yarn sequelize db:create && yarn sequelize db:migrate && yarn sequelize db:seed:all'
+    volumes:
+      - '.:/app'
+    environment:
+      - NODE_ENV=development
+    depends_on: [db]
+

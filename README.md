@@ -17,7 +17,20 @@ FastFeet é um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como
   <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-09/blob/b40d281a5b31e3d70f037559d87c0017a8d04d2e/README.md">Etapa 3 do desafio</a>
 </p>
 
-### _Features_ até o momento
+
+### Running
+
+```sh
+docker-compose up
+```
+
+Then open: `localhost:3000`  
+email: `admin@fastfeet.com`  
+password: `123456`  
+
+Se preferir subir o projeto sem Docker, siga o tutorial da wiki.
+
+### _Features_
 * Admin consegue se autenticar via Token JWT
 * Cadastrar e Editar destinatários.
 * Listar/cadastrar/editar/deletar entregadores e entregas.
