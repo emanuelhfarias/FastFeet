@@ -24,11 +24,11 @@ FastFeet é um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como
 docker-compose up
 ```
 
-Then open: `localhost:3000`  
+Abra em seu navegador: `localhost:3000`  
 email: `admin@fastfeet.com`  
-password: `123456`  
+senha: `123456`  
 
-Se preferir subir o projeto sem Docker, siga o tutorial da wiki.
+Se preferir subir o projeto sem Docker, siga o [tutorial da wiki](https://github.com/emanuelhfarias/FastFeet/wiki/Instala%C3%A7%C3%A3o).
 
 ### _Features_
 * Admin consegue se autenticar via Token JWT
@@ -40,32 +40,10 @@ Se preferir subir o projeto sem Docker, siga o tutorial da wiki.
 * Cancelar uma entrega
 * Envio de e-mail sobre novas entregas e cancelamento de encomendas.
 
-### Instalando Dependências
-```sh
-git clone ...
-cd FastFeet
-yarn
-```
-
-### Subindo o banco
-```sh
-mkdir db
-docker run -it -p 5432:5432 postgres
-```
-
-### Rodando migração e criando usuário Admin
-```sh
-yarn sequelize db:migrate
-yarn sequelize db:seed:all
-```
-
-### Subindo a aplicação
-```sh
-yarn dev
-```
 
 ### Rotas
 [Wiki Routes](https://github.com/emanuelhfarias/FastFeet/wiki/Rotas)
 
 ### Roadmap
 [Kanban](https://github.com/emanuelhfarias/FastFeet/projects/1?fullscreen=true)
+[Kanban web](https://github.com/emanuelhfarias/FastFeet/projects/2?fullscreen=true)
