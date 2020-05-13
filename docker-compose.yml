@@ -3,7 +3,7 @@ version: '3.7'
 services:
   app:
     container_name: dockerized-react-app
-    image: fastfeet_app
+    image: node:12.14.0-buster-slim
     build:
       context: .
       dockerfile: Dockerfile
@@ -19,7 +19,7 @@ services:
     depends_on: [backend]
   backend:
     container_name: dockerized-node-app
-    image: fastfeet_app
+    image: node:12.14.0-buster-slim
     working_dir: /app/backend
     command: bash -c 'yarn && yarn dev'
     stdin_open: true
@@ -29,19 +29,19 @@ services:
       - '.:/app'
     environment:
       - NODE_ENV=development
-    depends_on: [db]
+    depends_on: [db_seeding]
   db:
     image: postgres:latest
     volumes:
       - './backend/db:/var/lib/postgresql/data'
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
   db_seeding:
     container_name: db-seeding
-    image: fastfeet_app
+    image: node:12.14.0-buster-slim
     working_dir: /app/backend
     command: bash -c 'yarn && yarn sequelize db:create && yarn sequelize db:migrate && yarn sequelize db:seed:all'
     volumes:
