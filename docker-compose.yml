@@ -1,17 +1,14 @@
 version: '3.7'
 
 services:
-  app:
+  web:
     container_name: dockerized-react-app
     image: node:12.14.0-buster-slim
-    build:
-      context: .
-      dockerfile: Dockerfile
-    working_dir: /app/web
+    working_dir: /app
     command: bash -c 'yarn && yarn start'
     stdin_open: true
     volumes:
-      - '.:/app'
+      - './web:/app'
     ports:
       - '3000:3000'
     environment:
@@ -20,20 +17,20 @@ services:
   backend:
     container_name: dockerized-node-app
     image: node:12.14.0-buster-slim
-    working_dir: /app/backend
+    working_dir: /app
     command: bash -c 'yarn && yarn dev'
     stdin_open: true
     ports:
       - '3333:3333'
     volumes:
-      - '.:/app'
+      - './backend:/app'
     environment:
       - NODE_ENV=development
     depends_on: [db_seeding]
   db:
     image: postgres:latest
     volumes:
-      - './backend/db:/var/lib/postgresql/data'
+      - './db:/var/lib/postgresql/data'
     ports:
       - "5433:5432"
     environment:
@@ -42,10 +39,10 @@ services:
   db_seeding:
     container_name: db-seeding
     image: node:12.14.0-buster-slim
-    working_dir: /app/backend
+    working_dir: /app
     command: bash -c 'yarn && yarn sequelize db:create && yarn sequelize db:migrate && yarn sequelize db:seed:all'
     volumes:
-      - '.:/app'
+      - './backend:/app'
     environment:
       - NODE_ENV=development
     depends_on: [db]
