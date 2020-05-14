@@ -27,7 +27,7 @@ export default function Header() {
         <aside>
           <Profile>
             <div>
-              <strong>Emanuel H. Farias</strong>
+              <strong>Admin</strong>
               <LinkLogout onClick={handleSignOut}>Sair do sistma</LinkLogout>
             </div>
           </Profile>
