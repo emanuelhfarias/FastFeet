@@ -10,11 +10,13 @@
 FastFeet foi um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como objetivo a criação de uma aplicação para a gestão de uma transportadora fictícia.
 
 <p align="center">
-  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-02/blob/4e6c5db70ac176f78545d5c8a71b5930f72dc13a/README.md">Etapa 1 do desafio</a>
+  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-02/blob/4e6c5db70ac176f78545d5c8a71b5930f72dc13a/README.md">Etapa 1</a>
   &nbsp;|&nbsp;
-  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-03/blob/d0c8f32222938cec6719637a1d21616531da9644/README.md">Etapa 2 do desafio</a>
+  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-03/blob/d0c8f32222938cec6719637a1d21616531da9644/README.md">Etapa 2</a>
   &nbsp;|&nbsp;
-  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-09/blob/b40d281a5b31e3d70f037559d87c0017a8d04d2e/README.md">Etapa 3 do desafio</a>
+  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-09/blob/b40d281a5b31e3d70f037559d87c0017a8d04d2e/README.md">Etapa 3</a>
+  &nbsp;|&nbsp;
+  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-10/blob/1afb3403cf021a14734e6a23b91c957f13b2fec2/README.md">Etapa 4</a>
 </p>
 
 
