@@ -1,8 +1,14 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text } from 'react-native';
+
+import Background from '../../components/Background';
 
 export default function Main() {
-  return <View />;
+  return (
+    <Background>
+      <Text>Sign In</Text>
+    </Background>
+  );
 }
 
 Main.navigationOptions = {
