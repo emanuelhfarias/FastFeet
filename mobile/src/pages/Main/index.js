@@ -17,7 +17,3 @@ export default function Main() {
     </Background>
   );
 }
-
-Main.navigationOptions = {
-  title: 'FastFeet',
-};
