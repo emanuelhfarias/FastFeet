@@ -1,19 +1,25 @@
 import React from 'react';
 
-import Input from '../../components/Input';
-import Button from '../../components/Button';
 import Background from '../../components/Background';
+
+import Logo from '../../assets/logo.png';
+import { Container, Form, Image, FormInput, SubmitButton } from './styles';
 
 export default function Main() {
   return (
     <Background>
-      <Input
-        style={{ marginTop: 10 }}
-        icon="perm-identity"
-        placeholder="Informe seu ID de cadastro"
-      />
+      <Container>
+        <Image source={Logo} resizeMode="stretch" />
 
-      <Button>Entrar no sistema</Button>
+        <Form>
+          <FormInput
+            icon="perm-identity"
+            placeholder="Informe seu ID de cadastro"
+          />
+
+          <SubmitButton>Entrar no sistema</SubmitButton>
+        </Form>
+      </Container>
     </Background>
   );
 }
