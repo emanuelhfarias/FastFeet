@@ -1,18 +1,18 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import Routes from './routes';
+import App from './App';
 
 import './config/ReactotronConfig';
-import 'react-native-gesture-handler';
 
 import { store, persistor } from './store';
 
-export default function App() {
+export default function Index() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <Routes />
+        <App />
       </PersistGate>
     </Provider>
   );
