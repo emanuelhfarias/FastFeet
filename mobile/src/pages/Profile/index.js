@@ -4,19 +4,19 @@ import { withNavigationFocus } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-function Dashboard() {
+function Profile() {
   return (
     <View>
-      <Text>Entregas</Text>
+      <Text>Profile</Text>
     </View>
   );
 }
 
-Dashboard.navigationOptions = {
-  tabBarLabel: 'Entregas',
+Profile.navigationOptions = {
+  tabBarLabel: 'Meu Perfil',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="menu" size={20} color={tintColor} />
+    <Icon name="person" size={20} color={tintColor} />
   ),
 };
 
-export default withNavigationFocus(Dashboard);
+export default withNavigationFocus(Profile);
