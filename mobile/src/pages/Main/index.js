@@ -14,7 +14,6 @@ export default function Main() {
   const loading = useSelector((state) => state.auth.loading);
 
   function signIn() {
-    console.tron.log('oi');
     dispatch(signInRequest(deliverymanId));
   }
 
