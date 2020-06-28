@@ -6,7 +6,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { parseISO, format } from 'date-fns';
 import { signOut } from '../../store/modules/auth/actions';
 
-import { Container, Info, Label, Text, Image, Logout } from './styles';
+import { Container, Info, Label, Text, Logout } from './styles';
+import Avatar from '../../components/Avatar';
 
 function Profile() {
   const profile = useSelector((state) => state.auth.profile.records[0]);
@@ -22,13 +23,7 @@ function Profile() {
 
   return (
     <Container>
-      <Image
-        source={{
-          uri: profile.avatar
-            ? profile.avatar.url.replace('localhost', '10.0.2.2')
-            : `https://api.adorable.io/avatar/50/${profile.name}.png`,
-        }}
-      />
+      <Avatar profile={profile} size="100" centralize />
 
       <Info>
         <Label>Nome Completo</Label>

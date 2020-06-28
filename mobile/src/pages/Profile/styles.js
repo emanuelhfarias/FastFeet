@@ -22,13 +22,6 @@ export const Text = styled.Text`
   color: #444;
 `;
 
-export const Image = styled.Image`
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-`;
-
 export const Logout = styled(Button)`
   margin-top: 10px;
 `;

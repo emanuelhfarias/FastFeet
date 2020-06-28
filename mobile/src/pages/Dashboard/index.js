@@ -1,14 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import { Container } from './styles';
+
+import ProfileHeader from '../../components/ProfileHeader';
+
 function Dashboard() {
   return (
-    <View>
+    <Container>
+      <ProfileHeader />
       <Text>Entregas</Text>
-    </View>
+    </Container>
   );
 }
 
