@@ -5,3 +5,9 @@ export const Container = styled.View`
   margin: 0 auto;
   padding-top: 20px;
 `;
+
+export const Title = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+  color: #444;
+`;
