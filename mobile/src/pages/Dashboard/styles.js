@@ -11,3 +11,9 @@ export const Title = styled.Text`
   font-weight: bold;
   color: #444;
 `;
+
+export const Delivery = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;

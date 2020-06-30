@@ -6,6 +6,11 @@ import Main from './pages/Main';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 
+import Details from './pages/Delivery/Details';
+import Problem from './pages/Delivery/Problem';
+import NewProblem from './pages/Delivery/NewProblem';
+import Confirm from './pages/Delivery/Confirm';
+
 export default (signedIn = false) =>
   createAppContainer(
     createSwitchNavigator(
@@ -15,7 +20,13 @@ export default (signedIn = false) =>
         }),
         App: createBottomTabNavigator(
           {
-            Dashboard,
+            Dashboard: createStackNavigator({
+              Dashboard: { screen: Dashboard },
+              Details: { screen: Details },
+              Problem: { screen: Problem },
+              NewProblem: { screen: NewProblem },
+              Confirm: { screen: Confirm },
+            }),
             Profile,
           },
           {
