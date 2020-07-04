@@ -6,7 +6,6 @@ import IconCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {
   Container,
-  Header,
   Actions,
   InfoBlock,
   Item,
@@ -19,10 +18,12 @@ import {
   ActionText,
 } from './styles';
 
+import { BackgroundHeader } from '../../../components/BackgroundHeader';
+
 export default function Details({ navigation }) {
   return (
     <Container>
-      <Header />
+      <BackgroundHeader />
 
       <InfoBlock>
         <Title>
@@ -72,22 +73,22 @@ export default function Details({ navigation }) {
         <ActionItem>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Problem');
+              navigation.navigate('NewProblem');
             }}
           >
             <Icon name="highlight-off" color="#E74040" size={20} />
-            <ActionText>Visualizar Problema</ActionText>
+            <ActionText>Informar Problema</ActionText>
           </TouchableOpacity>
         </ActionItem>
 
         <ActionItem>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('NewProblem');
+              navigation.navigate('Problem');
             }}
           >
             <Icon name="info-outline" color="#E7BA40" size={20} />
-            <ActionText>Informar Problema</ActionText>
+            <ActionText>Visualizar Problema</ActionText>
           </TouchableOpacity>
         </ActionItem>
 
