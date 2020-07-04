@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { withNavigationFocus } from 'react-navigation';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import { parseISO, format } from 'date-fns';
 import { signOut } from '../../store/modules/auth/actions';
 
@@ -46,12 +45,5 @@ function Profile() {
     </Container>
   );
 }
-
-Profile.navigationOptions = {
-  tabBarLabel: 'Meu Perfil',
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="person" size={20} color={tintColor} />
-  ),
-};
 
 export default withNavigationFocus(Profile);

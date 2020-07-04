@@ -63,7 +63,7 @@ export default function Details({ navigation }) {
             <Text>14/01/2020</Text>
           </Item>
           <Item>
-            <Label>Data Engrega</Label>
+            <Label>Data Entrega</Label>
             <Text>--/--/----</Text>
           </Item>
         </GroupItem>

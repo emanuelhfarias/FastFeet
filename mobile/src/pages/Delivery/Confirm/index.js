@@ -14,7 +14,7 @@ export default function Confirm() {
 
       <Block>
         <BlockInside>
-          <Text>Take a signature picture</Text>
+          <Text>Tire uma foto da assinatura</Text>
 
           <TouchableOpacity onPress={() => {}}>
             <Icon name="photo-camera" size={40} color="#333" />
