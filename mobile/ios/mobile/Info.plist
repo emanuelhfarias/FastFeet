@@ -36,6 +36,8 @@
 				<true/>
 			</dict>
 		</dict>
+    <key>NSCameraUsageDescription</key>
+    <string>Usamos a câmera para capturar a assinatura do destinatário</string>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, TouchableOpacity } from 'react-native';
+import { Button, TouchableOpacity, View } from 'react-native';
+import { RNCamera } from 'react-native-camera';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -8,6 +9,13 @@ import { BackgroundHeader } from '../../../components/BackgroundHeader';
 import { Container, Block, BlockInside, Text } from './styles';
 
 export default function Confirm() {
+  async function takePicture(camera) {
+    const options = { quality: 0.5, base64: true };
+    const data = await camera.takePictureAsync(options);
+    //  eslint-disable-next-line
+    console.log(data.uri);
+  }
+
   return (
     <Container>
       <BackgroundHeader />
@@ -16,9 +24,19 @@ export default function Confirm() {
         <BlockInside>
           <Text>Tire uma foto da assinatura</Text>
 
-          <TouchableOpacity onPress={() => {}}>
-            <Icon name="photo-camera" size={40} color="#333" />
-          </TouchableOpacity>
+          <RNCamera
+            type={RNCamera.Constants.Type.back}
+            flashMode={RNCamera.Constants.FlashMode.on}
+          >
+            {({ camera, status, recordAudioPermissionStatus }) => {
+              if (status !== 'READY') return <></>;
+              return (
+                <TouchableOpacity onPress={() => takePicture(camera)}>
+                  <Icon name="photo-camera" size={40} color="#333" />
+                </TouchableOpacity>
+              );
+            }}
+          </RNCamera>
         </BlockInside>
         <Button onPress={() => {}} color="#7d40e7" title="Enviar" />
       </Block>
