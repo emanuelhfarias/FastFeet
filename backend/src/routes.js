@@ -20,6 +20,8 @@ routes.post('/session', SessionController.store);
 routes.get('/deliveryman', DeliverymanController.index);
 routes.get('/delivery', DeliveryController.index);
 routes.get('/recipient', RecipientController.index);
+routes.get('/delivery/:id/problems', DeliveryProblemsController.index);
+routes.post('/delivery/:id/problems', DeliveryProblemsController.store);
 
 routes.use(AuthMiddleware);
 routes.post('/recipient', RecipientController.store);
@@ -55,8 +57,6 @@ routes.put(
 );
 
 routes.get('/delivery/problems', DeliveryProblemsController.index);
-routes.get('/delivery/:id/problems', DeliveryProblemsController.index);
-routes.post('/delivery/:id/problems', DeliveryProblemsController.store);
 routes.delete(
   '/problem/:id/cancel-delivery',
   DeliveryProblemsController.delete

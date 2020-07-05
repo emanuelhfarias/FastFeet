@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { parseISO, format } from 'date-fns';
 
 import { BackgroundHeader } from '../../../components/BackgroundHeader';
+import api from '../../../services/api';
 
 import {
   Container,
@@ -13,21 +15,33 @@ import {
   ProblemText,
 } from './styles';
 
-export default function Problem() {
+export default function Problem({ navigation }) {
+  const delivery_id = navigation.getParam('delivery_id');
+  const [problems, setProblems] = useState([]);
+
+  useEffect(() => {
+    async function fetchDeliveryProblems() {
+      const response = await api.get(`delivery/${delivery_id}/problems`);
+
+      setProblems(response.data.records);
+    }
+
+    fetchDeliveryProblems();
+  }, []);
+
   return (
     <Container>
       <BackgroundHeader />
 
       <Block>
-        <ProblemBlock>
-          <ProblemText>Destinatário ausente</ProblemText>
-          <ProblemDate>14/01/2020</ProblemDate>
-        </ProblemBlock>
-
-        <ProblemBlock>
-          <ProblemText>Destinatário ausente</ProblemText>
-          <ProblemDate>15/01/2020</ProblemDate>
-        </ProblemBlock>
+        {problems.map((problem) => (
+          <ProblemBlock key={problem.id}>
+            <ProblemText>{problem.description}</ProblemText>
+            <ProblemDate>
+              {format(parseISO(problem.createdAt), 'dd/MM/yyyy')}
+            </ProblemDate>
+          </ProblemBlock>
+        ))}
       </Block>
     </Container>
   );

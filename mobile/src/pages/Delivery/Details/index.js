@@ -121,7 +121,7 @@ export default function Details({ navigation }) {
         <ActionItem>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Problem');
+              navigation.navigate('Problem', { delivery_id: delivery.id });
             }}
           >
             <Icon name="info-outline" color="#E7BA40" size={20} />

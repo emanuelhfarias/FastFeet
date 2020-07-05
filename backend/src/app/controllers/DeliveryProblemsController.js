@@ -9,7 +9,7 @@ class DeliveryProblemsController {
     const { id } = req.params;
     const { page = 1 } = req.query;
 
-    const filter = id ? { where: { id } } : {};
+    const filter = id ? { where: { delivery_id: id } } : {};
 
     const tamanhoPagina = 5;
     if (page < 1) return res.json([]);
