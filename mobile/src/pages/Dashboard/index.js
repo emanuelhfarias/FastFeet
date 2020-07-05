@@ -65,10 +65,6 @@ function Dashboard({ navigation }) {
     fetchDeliveries();
   }, [filter]);
 
-  useEffect(() => {
-    fetchDeliveries();
-  }, []);
-
   return (
     <Container>
       <ProfileHeader />
@@ -127,7 +123,9 @@ function Dashboard({ navigation }) {
                   {delivery.Recipient.cidade}
                 </DeliveryInfoContent>
               </DeliveryInfoBlock>
-              <Button onPress={() => navigation.navigate('Details')}>
+              <Button
+                onPress={() => navigation.navigate('Details', { delivery })}
+              >
                 <DetailsLink>Ver detalhes</DetailsLink>
               </Button>
             </DeliveryInfo>

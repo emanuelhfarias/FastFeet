@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
-
+import { parseISO, format } from 'date-fns';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
+import api from '../../../services/api';
 
 import {
   Container,
@@ -21,6 +22,29 @@ import {
 import { BackgroundHeader } from '../../../components/BackgroundHeader';
 
 export default function Details({ navigation }) {
+  const delivery = navigation.getParam('delivery');
+  const [recipient, setRecipient] = useState({});
+
+  function situacao({ end_date, canceled_at }) {
+    let text = 'PENDENTE';
+    if (end_date) text = 'ENTREGUE';
+    if (canceled_at) text = 'CANCELADA';
+
+    return text;
+  }
+
+  useEffect(() => {
+    async function fetchRecipient() {
+      const response = await api.get('recipient', {
+        params: { id: delivery.recipient_id },
+      });
+
+      setRecipient(response.data.records[0]);
+    }
+
+    fetchRecipient();
+  }, []);
+
   return (
     <Container>
       <BackgroundHeader />
@@ -33,17 +57,21 @@ export default function Details({ navigation }) {
 
         <Item>
           <Label>Destinatário</Label>
-          <Text>Ludwig</Text>
+          <Text>{delivery.Recipient.nome}</Text>
         </Item>
 
         <Item>
           <Label>Endereço</Label>
-          <Text>Rua Brisamar</Text>
+          <Text>
+            {recipient
+              ? `${recipient.rua}, ${recipient.numero}, ${recipient.complemento}, ${recipient.cidade}`
+              : '---'}
+          </Text>
         </Item>
 
         <Item>
           <Label>Produto</Label>
-          <Text>Edifier</Text>
+          <Text>{delivery.product}</Text>
         </Item>
       </InfoBlock>
 
@@ -55,16 +83,25 @@ export default function Details({ navigation }) {
 
         <Item>
           <Label>Status</Label>
-          <Text>Pendente</Text>
+          <Text>{situacao(delivery)}</Text>
         </Item>
         <GroupItem>
           <Item>
             <Label>Data Retirada</Label>
-            <Text>14/01/2020</Text>
+            <Text>
+              {delivery.start_date !== null
+                ? format(parseISO(delivery.start_date), 'dd/MM/yyyy')
+                : '--/--/----'}
+            </Text>
           </Item>
           <Item>
             <Label>Data Entrega</Label>
-            <Text>--/--/----</Text>
+            <Text>
+              {' '}
+              {delivery.end_date !== null
+                ? format(parseISO(delivery.end_date), 'dd/MM/yyyy')
+                : '--/--/----'}
+            </Text>
           </Item>
         </GroupItem>
       </InfoBlock>
