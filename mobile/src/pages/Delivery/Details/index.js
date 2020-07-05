@@ -110,7 +110,7 @@ export default function Details({ navigation }) {
         <ActionItem>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('NewProblem');
+              navigation.navigate('NewProblem', { delivery_id: delivery.id });
             }}
           >
             <Icon name="highlight-off" color="#E74040" size={20} />
