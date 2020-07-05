@@ -4,6 +4,7 @@ export const Container = styled.View`
   width: 90%;
   margin: 0 auto;
   padding-top: 20px;
+  flex: 1;
 `;
 
 export const Title = styled.Text`
@@ -95,7 +96,9 @@ export const DeliveryInfo = styled.View`
   align-items: flex-end;
 `;
 
-export const DeliveryInfoBlock = styled.View``;
+export const DeliveryInfoBlock = styled.View`
+  width: 75px;
+`;
 
 export const DeliveryInfoLegend = styled.Text`
   font-size: 10px;
@@ -106,3 +109,5 @@ export const DeliveryInfoContent = styled.Text`
   color: #444;
   font-weight: bold;
 `;
+
+export const Deliveries = styled.ScrollView``;
