@@ -132,7 +132,7 @@ export default function Details({ navigation }) {
         <ActionItem>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Confirm');
+              navigation.navigate('Confirm', { delivery_id: delivery.id });
             }}
           >
             <IconCommunity
