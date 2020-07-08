@@ -13,6 +13,8 @@ react-native start
 react-native run-android
 ```
 
+Não tenho emulador instalado, [veja como instalar o Android Emulator sem ter o Android Studio](https://github.com/emanuelhfarias/FastFeet/wiki/Rodando-o-Android-Emulator-sem-o-Android-Studio).
+
 ### Debugging with Reactotron
 ```sh
 # first open Reactotron
