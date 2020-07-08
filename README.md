@@ -33,6 +33,7 @@ senha: `123456`
 Se preferir subir o projeto sem Docker, siga o [tutorial da wiki](https://github.com/emanuelhfarias/FastFeet/wiki/Instala%C3%A7%C3%A3o).
 
 ### _Features_
+#### Web
 * Admin consegue se autenticar via Token JWT
 * Cadastrar e Editar destinatários.
 * Listar/cadastrar/editar/deletar entregadores e entregas.
@@ -42,10 +43,10 @@ Se preferir subir o projeto sem Docker, siga o [tutorial da wiki](https://github
 * Cancelar uma entrega
 * Envio de e-mail sobre novas entregas e cancelamento de encomendas.
 
+#### Mobile
+* Entregador consegue ver as entregas pendentes e as já entregues
+* Visualiza detalhes e situação da encomenda
+* Registrar e listar problemas com a entrega
+* Confirmar a entrega com a assinatura do destinatário
 
-### Rotas
-[Wiki Routes](https://github.com/emanuelhfarias/FastFeet/wiki/Rotas)
 
-### Roadmap
-[Kanban](https://github.com/emanuelhfarias/FastFeet/projects/1?fullscreen=true)
-[Kanban web](https://github.com/emanuelhfarias/FastFeet/projects/2?fullscreen=true)
