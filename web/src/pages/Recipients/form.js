@@ -144,7 +144,7 @@ export default function RecipientForm() {
               name="cep"
               placeholder="cep"
               value={cep}
-              onChange={(e) => setCep(e.target.value)}
+              onChange={(e) => setCep(e.target.value.replace('-', ''))}
             />
           </Field>
         </GroupLine>
