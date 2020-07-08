@@ -50,7 +50,7 @@ Se preferir subir o projeto sem Docker, siga o [tutorial da wiki](https://github
 * Confirmar a entrega com a assinatura do destinatário
 
 
-## Screenshots
+## :camera: Screenshots
 <h1 align="center">
   <img src=".github/mobile/login.png" height="300px" />
   <img src=".github/web/deliveries.png" height="250px" />
