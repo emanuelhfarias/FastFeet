@@ -23,11 +23,11 @@ $ adb reverse tcp:9090 tcp:9090 # wait Android Emulator open before run this com
 ```
 
 <h1 align="center">
-  <img src=".github/mobile/login.png" />
-  <img src=".github/mobile/deliveries.png" />
-  <img src=".github/mobile/details.png" />
-  <img src=".github/mobile/perfil.png" />
-  <img src=".github/mobile/confirm.png" />
-  <img src=".github/mobile/problems.png" />
-  <img src=".github/mobile/new_problem.png" />
+  <img src="../github/mobile/login.png" />
+  <img src="../github/mobile/deliveries.png" />
+  <img src="../github/mobile/details.png" />
+  <img src="../github/mobile/perfil.png" />
+  <img src="../github/mobile/confirm.png" />
+  <img src="../github/mobile/problems.png" />
+  <img src="../github/mobile/new_problem.png" />
 </h1>
