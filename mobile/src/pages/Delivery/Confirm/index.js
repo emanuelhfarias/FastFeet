@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, TouchableOpacity, View } from 'react-native';
+import { Alert, Button, TouchableOpacity } from 'react-native';
+
 import { RNCamera } from 'react-native-camera';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -16,27 +17,30 @@ export default function Confirm({ navigation }) {
 
   async function takePicture(camera) {
     const data = await camera.takePictureAsync({ quality: 0.5, base64: true });
-    console.tron.log(data);
     setCameraVisible(false);
     setFile(data.uri);
   }
 
   async function confirmDelivery() {
     const data = new FormData();
-    const extention = file.split('.').pop();
 
     data.append('file', {
       uri: file,
-      name: `assinatura.${extention}`,
-      type: `image/${extention}`,
+      name: 'assinatura.jpeg',
+      type: 'image/jpeg',
     });
 
-    await api.put(`delivery/${deliveryId}/finish`, data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    navigation.navigate('Deliveries');
+    try {
+      await api.put(`delivery/${deliveryId}/finish`, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      navigation.goBack();
+    } catch (error) {
+      Alert.alert('Falha ao enviar foto', 'Remova a foto atual e envie outra.');
+    }
   }
 
   return (

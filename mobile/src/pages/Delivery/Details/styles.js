@@ -5,7 +5,7 @@ export const Container = styled.ScrollView``;
 export const InfoBlock = styled.View`
   background: #fff;
   margin: 0 12px;
-  padding: 8px 14px 0px 14px;
+  padding: 12px 14px 12px 14px;
   border-radius: 4px;
 `;
 

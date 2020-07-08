@@ -104,46 +104,46 @@ export default function Details({ navigation }) {
             </Text>
           </Item>
         </GroupItem>
+
+        <Actions>
+          <ActionItem>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('NewProblem', { delivery_id: delivery.id });
+              }}
+            >
+              <Icon name="highlight-off" color="#E74040" size={20} />
+              <ActionText>Informar Problema</ActionText>
+            </TouchableOpacity>
+          </ActionItem>
+
+          <ActionItem>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Problem', { delivery_id: delivery.id });
+              }}
+            >
+              <Icon name="info-outline" color="#E7BA40" size={20} />
+              <ActionText>Visualizar Problema</ActionText>
+            </TouchableOpacity>
+          </ActionItem>
+
+          <ActionItem>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Confirm', { delivery_id: delivery.id });
+              }}
+            >
+              <IconCommunity
+                name="check-circle-outline"
+                color="#7D40E7"
+                size={20}
+              />
+              <ActionText>Confirmar Entraga</ActionText>
+            </TouchableOpacity>
+          </ActionItem>
+        </Actions>
       </InfoBlock>
-
-      <Actions>
-        <ActionItem>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('NewProblem', { delivery_id: delivery.id });
-            }}
-          >
-            <Icon name="highlight-off" color="#E74040" size={20} />
-            <ActionText>Informar Problema</ActionText>
-          </TouchableOpacity>
-        </ActionItem>
-
-        <ActionItem>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Problem', { delivery_id: delivery.id });
-            }}
-          >
-            <Icon name="info-outline" color="#E7BA40" size={20} />
-            <ActionText>Visualizar Problema</ActionText>
-          </TouchableOpacity>
-        </ActionItem>
-
-        <ActionItem>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Confirm', { delivery_id: delivery.id });
-            }}
-          >
-            <IconCommunity
-              name="check-circle-outline"
-              color="#7D40E7"
-              size={20}
-            />
-            <ActionText>Confirmar Entraga</ActionText>
-          </TouchableOpacity>
-        </ActionItem>
-      </Actions>
     </Container>
   );
 }
