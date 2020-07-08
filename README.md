@@ -50,3 +50,16 @@ Se preferir subir o projeto sem Docker, siga o [tutorial da wiki](https://github
 * Confirmar a entrega com a assinatura do destinatário
 
 
+## Screenshots
+<h1 align="center">
+  <img src=".github/mobile/deliveries.png" height="300px" />
+  <img src=".github/web/deliveries.png" height="300px" />
+</h1>
+
+<p align="center">
+  Mais fotos em:
+  <br />
+  <a href="">Fotos Web</a>
+  &nbsp;|&nbsp;
+  <a href="">Etapa 2</a>
+</p>
