@@ -7,7 +7,7 @@
 </h3>
 
 ### Desafio
-FastFeet foi um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como objetivo a criação de uma aplicação para a gestão de uma transportadora fictícia.
+FastFeet foi um desafio proposto pelo Bootcamp GoStack#10 da RocketSeat. Tem como objetivo a criação de uma aplicação para a gestão de uma transportadora fictícia. Nesse projeto foram desenvolvidos uma API em Node, uma aplicação web em React e uma aplicativo Mobile em react-native.
 
 <p align="center">
   <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-02/blob/4e6c5db70ac176f78545d5c8a71b5930f72dc13a/README.md">Etapa 1</a>
@@ -59,7 +59,7 @@ Se preferir subir o projeto sem Docker, siga o [tutorial da wiki](https://github
 <p align="center">
   Mais fotos em:
   <br />
-  <a href="">Fotos Web</a>
+  <a href="https://github.com/emanuelhfarias/FastFeet/blob/master/web/README.md">Fotos Web</a>
   &nbsp;|&nbsp;
-  <a href="">Fotos Mobile</a>
+  <a href="https://github.com/emanuelhfarias/FastFeet/blob/master/mobile/README.md">Fotos Mobile</a>
 </p>
