@@ -52,8 +52,8 @@ Se preferir subir o projeto sem Docker, siga o [tutorial da wiki](https://github
 
 ## Screenshots
 <h1 align="center">
-  <img src=".github/mobile/deliveries.png" height="300px" />
-  <img src=".github/web/deliveries.png" height="300px" />
+  <img src=".github/mobile/login.png" height="300px" />
+  <img src=".github/web/deliveries.png" height="250px" />
 </h1>
 
 <p align="center">
@@ -61,5 +61,5 @@ Se preferir subir o projeto sem Docker, siga o [tutorial da wiki](https://github
   <br />
   <a href="">Fotos Web</a>
   &nbsp;|&nbsp;
-  <a href="">Etapa 2</a>
+  <a href="">Fotos Mobile</a>
 </p>
